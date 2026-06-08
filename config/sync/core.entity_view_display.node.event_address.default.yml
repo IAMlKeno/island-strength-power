@@ -1,0 +1,103 @@
+uuid: b5df71eb-4674-4e6b-ad0d-d26030673761
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event_address.field_address
+    - node.type.event_address
+  module:
+    - address
+    - layout_builder
+    - layout_discovery
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          9d45a605-4f48-495d-8040-c0c05f0fd602:
+            uuid: 9d45a605-4f48-495d-8040-c0c05f0fd602
+            region: content
+            configuration:
+              id: 'extra_field_block:node:event_address:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          7bb98aa9-4170-43b9-8173-d2493ee0135a:
+            uuid: 7bb98aa9-4170-43b9-8173-d2493ee0135a
+            region: content
+            configuration:
+              id: 'field_block:node:event_address:field_address'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: address_plain
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          34aa10d9-fd5b-4196-9441-97c89ba0d05a:
+            uuid: 34aa10d9-fd5b-4196-9441-97c89ba0d05a
+            region: content
+            configuration:
+              id: 'field_block:node:event_address:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          f02dd31e-9a19-4ddb-b98c-0915980edb01:
+            uuid: f02dd31e-9a19-4ddb-b98c-0915980edb01
+            region: content
+            configuration:
+              id: 'field_block:node:event_address:field_address'
+              label: Address
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: address_plain
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+id: node.event_address.default
+targetEntityType: node
+bundle: event_address
+mode: default
+content:
+  field_address:
+    type: address_plain
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

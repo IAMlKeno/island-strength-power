@@ -1,0 +1,14 @@
+uuid: 6783f79e-124f-4db8-ad3b-e0307d3a9ff2
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.isp_athlete
+  module:
+    - user
+id: user_remove_role_action.isp_athlete
+label: 'Remove the ISP_Athlete role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: isp_athlete

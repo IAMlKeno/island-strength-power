@@ -1,0 +1,19 @@
+uuid: eef1e1c8-5803-4df1-8b51-b14d735ea8da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_transaction_number
+    - node.type.reciept
+id: node.reciept.field_transaction_number
+field_name: field_transaction_number
+entity_type: node
+bundle: reciept
+label: 'Transaction Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

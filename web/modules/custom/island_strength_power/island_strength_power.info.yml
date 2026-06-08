@@ -1,0 +1,5 @@
+name: 'Island Strength and Power'
+type: module
+description: 'Customizations for island strength and power.'
+package: Custom
+core_version_requirement: ^10 || ^11

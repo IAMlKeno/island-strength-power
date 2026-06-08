@@ -1,0 +1,18 @@
+uuid: f6a6efcc-3968-4a86-a48d-2b663eac2a49
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Event
+type: event
+description: 'Upcoming events'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

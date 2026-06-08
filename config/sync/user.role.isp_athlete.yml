@@ -1,0 +1,18 @@
+uuid: 25c28819-74bb-4c55-a5c5-76ffc2929c36
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.webform_default
+  module:
+    - filter
+    - system
+id: isp_athlete
+label: ISP_Athlete
+weight: 3
+is_admin: null
+permissions:
+  - 'access content'
+  - 'use text format basic_html'
+  - 'use text format webform_default'

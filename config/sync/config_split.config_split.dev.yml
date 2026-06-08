@@ -1,0 +1,24 @@
+uuid: d2b5b492-4655-4c02-ab2d-795aab75e01a
+langcode: en
+status: true
+dependencies: {  }
+id: dev
+label: dev
+description: 'Dev - local settings'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/dev
+module:
+  devel: 0
+  devel_kint_extras: 0
+  devel_php: 0
+theme: {  }
+complete_list: {  }
+partial_list:
+  - smtp.settings
+  - stripe.settings
+  - system.logging
+  - system.site
+  - core.extension

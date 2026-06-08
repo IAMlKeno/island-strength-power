@@ -1,0 +1,19 @@
+uuid: 9e6f1ce7-00a5-4be2-a250-b740084d8392
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_athlete_submission_id
+    - node.type.reciept
+id: node.reciept.field_athlete_submission_id
+field_name: field_athlete_submission_id
+entity_type: node
+bundle: reciept
+label: 'Athlete Submission Id'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

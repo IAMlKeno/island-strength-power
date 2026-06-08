@@ -1,0 +1,20 @@
+uuid: 80effe55-d3ca-41a5-9085-3e261aaa1f24
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+    - taxonomy
+id: profile.field_preferred_competition_styl
+field_name: field_preferred_competition_styl
+entity_type: profile
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 2
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

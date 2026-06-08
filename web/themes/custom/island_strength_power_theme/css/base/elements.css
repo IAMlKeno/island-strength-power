@@ -1,0 +1,46 @@
+body {
+  background-color: #c3b68a !important;
+}
+
+h2 {
+  font-size: 36px!important;
+  font-weight: 800!important;
+}
+
+.flexslider {
+  width: 80%;
+  /* margin: auto !important; */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background-color: transparent!important;
+  border: none!important;
+}
+@media only screen and (max-width: 600px) {
+  .flexslider {
+  }
+}
+.flexslider .slides img {
+  max-height: 500px;
+  max-width: 60%;
+  margin: auto;
+}
+.flex-viewport {
+  max-height: 500px;
+}
+
+.scc-element-membership-wrapper {
+  flex-wrap: wrap;
+}
+.scc-element-membership-wrapper .description {
+  flex-basis: 100%;
+}
+
+.flex-slider-container .slider-description {
+  color: #87ceeb;
+}
+
+.isp-icon-button-round {
+  color: #19c2c8 !important;
+  background-color: #fff !important;
+  border-radius: 55%;
+}

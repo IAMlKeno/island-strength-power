@@ -1,0 +1,30 @@
+uuid: 58a0b6f5-ef09-40ec-b603-16c8da602cf9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event_address.field_address
+    - node.type.event_address
+  module:
+    - address
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.event_address.teaser
+targetEntityType: node
+bundle: event_address
+mode: teaser
+content:
+  field_address:
+    type: address_plain
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  links: true

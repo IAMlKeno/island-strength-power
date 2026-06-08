@@ -1,0 +1,107 @@
+uuid: 5b1f9dbe-3e3c-44cf-a01b-51612e51eafe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.node.event.default
+    - filter.format.basic_html
+    - node.type.basic_page
+    - node.type.event
+    - node.type.event_address
+    - node.type.webform
+    - taxonomy.vocabulary.age_category
+    - taxonomy.vocabulary.competition
+    - taxonomy.vocabulary.division
+    - taxonomy.vocabulary.event_type
+    - taxonomy.vocabulary.weight_class_scm
+    - taxonomy.vocabulary.weight_class_wrpf
+  module:
+    - field_ui
+    - filter
+    - layout_builder
+    - node
+    - path
+    - profile
+    - stripe
+    - system
+    - taxonomy
+    - toolbar
+    - webform
+    - webform_node
+id: isp_admin
+label: ISP_Admin
+weight: 2
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content'
+  - 'access content overview'
+  - 'access toolbar'
+  - 'access webform help'
+  - 'access webform overview'
+  - 'access webform submission user'
+  - 'administer menu'
+  - 'administer node display'
+  - 'administer node form display'
+  - 'administer nodes'
+  - 'administer permissions'
+  - 'administer stripe'
+  - 'administer taxonomy'
+  - 'administer taxonomy_term display'
+  - 'administer taxonomy_term form display'
+  - 'administer user display'
+  - 'administer user form display'
+  - 'administer webform element access'
+  - 'administer webform submission'
+  - 'configure editable event node layout overrides'
+  - 'create and edit custom blocks'
+  - 'create athlete_profile profile'
+  - 'create basic_page content'
+  - 'create event content'
+  - 'create event_address content'
+  - 'create terms in age_category'
+  - 'create terms in competition'
+  - 'create terms in division'
+  - 'create terms in event_type'
+  - 'create terms in weight_class_scm'
+  - 'create terms in weight_class_wrpf'
+  - 'create url aliases'
+  - 'create webform'
+  - 'delete own webform'
+  - 'delete term revisions in age_category'
+  - 'delete term revisions in competition'
+  - 'delete term revisions in division'
+  - 'delete term revisions in event_type'
+  - 'delete term revisions in weight_class_scm'
+  - 'delete term revisions in weight_class_wrpf'
+  - 'delete terms in age_category'
+  - 'delete terms in competition'
+  - 'delete terms in division'
+  - 'delete terms in event_type'
+  - 'delete terms in weight_class_scm'
+  - 'delete terms in weight_class_wrpf'
+  - 'edit any basic_page content'
+  - 'edit any event content'
+  - 'edit any event_address content'
+  - 'edit any webform'
+  - 'edit any webform content'
+  - 'edit any webform submission'
+  - 'edit own basic_page content'
+  - 'edit own event content'
+  - 'edit own event_address content'
+  - 'edit own webform'
+  - 'edit own webform content'
+  - 'edit own webform submission'
+  - 'edit terms in age_category'
+  - 'edit terms in competition'
+  - 'edit terms in division'
+  - 'edit terms in event_type'
+  - 'edit terms in weight_class_scm'
+  - 'edit terms in weight_class_wrpf'
+  - 'edit webform submissions any node'
+  - 'edit webform submissions own node'
+  - 'use text format basic_html'
+  - 'view any webform submission'
+  - 'view own unpublished content'
+  - 'view own webform submission'
+  - 'view the administration theme'

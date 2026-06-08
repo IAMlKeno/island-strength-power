@@ -1,0 +1,13 @@
+isp_stripe:
+  js:
+    js/isp_stripe.js: {}
+skip_stripe:
+  js:
+    js/skip_stripe.js: {}
+everything_stripe:
+  js:
+    js/everything_stripe.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once

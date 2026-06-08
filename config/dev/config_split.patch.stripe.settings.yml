@@ -1,0 +1,14 @@
+adding:
+  environment: test
+  apikey:
+    test:
+      public: ''
+    live:
+      public: ''
+removing:
+  environment: live
+  apikey:
+    test:
+      public: null
+    live:
+      public: null

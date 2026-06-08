@@ -1,0 +1,68 @@
+uuid: 1950ada0-b986-443f-a718-ae28589cc5c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.profile.athlete_profile.field_date_of_birth
+    - field.field.profile.athlete_profile.field_first_name
+    - field.field.profile.athlete_profile.field_last_name
+    - field.field.profile.athlete_profile.field_phone_number
+    - field.field.profile.athlete_profile.field_preferred_competition_styl
+    - field.field.profile.athlete_profile.field_preferred_strongman_weight
+    - field.field.profile.athlete_profile.field_preferred_weight_class
+    - profile.type.athlete_profile
+id: profile.athlete_profile.default
+targetEntityType: profile
+bundle: athlete_profile
+mode: default
+content:
+  field_date_of_birth:
+    type: datetime_timestamp
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_first_name:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_last_name:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone_number:
+    type: string_textfield
+    weight: 29
+    region: content
+    settings:
+      size: 60
+      placeholder: 902-123-4567
+    third_party_settings: {  }
+  field_preferred_competition_styl:
+    type: options_buttons
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_preferred_strongman_weight:
+    type: options_select
+    weight: 32
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_preferred_weight_class:
+    type: options_select
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  is_default: true

@@ -1,0 +1,19 @@
+uuid: 1e00474a-5e6e-4c39-8c03-cc4949ee4c52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header_text
+    - node.type.basic_page
+id: node.basic_page.field_header_text
+field_name: field_header_text
+entity_type: node
+bundle: basic_page
+label: 'Header Text'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

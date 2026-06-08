@@ -1,0 +1,20 @@
+uuid: b1aff27c-7d1f-4a77-98fd-2c9fc34243c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_registration_price
+field_name: field_registration_price
+entity_type: node
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

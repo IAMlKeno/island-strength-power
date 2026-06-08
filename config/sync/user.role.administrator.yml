@@ -1,0 +1,232 @@
+uuid: 001ed360-6a99-4467-8eea-dc4fa0cf13fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.node.event.default
+    - filter.format.basic_html
+    - filter.format.webform_default
+    - node.type.basic_page
+    - node.type.event
+    - node.type.event_address
+    - node.type.webform
+    - taxonomy.vocabulary.age_category
+    - taxonomy.vocabulary.competition
+    - taxonomy.vocabulary.division
+    - taxonomy.vocabulary.event_type
+    - taxonomy.vocabulary.weight_class_scm
+    - taxonomy.vocabulary.weight_class_wrpf
+  module:
+    - block
+    - contextual
+    - field_ui
+    - file
+    - filter
+    - image
+    - layout_builder
+    - node
+    - path
+    - pathauto
+    - profile
+    - registration_role
+    - responsive_image
+    - rest
+    - simple_sitemap
+    - stripe
+    - system
+    - taxonomy
+    - toolbar
+    - update
+    - views_ui
+    - webform
+    - webform_node
+id: administrator
+label: 'Administrator role'
+weight: 4
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access any webform configuration'
+  - 'access content'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access own webform configuration'
+  - 'access profile overview'
+  - 'access site in maintenance mode'
+  - 'access site reports'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'access webform help'
+  - 'access webform overview'
+  - 'access webform submission user'
+  - 'administer account settings'
+  - 'administer actions'
+  - 'administer blocks'
+  - 'administer content types'
+  - 'administer display modes'
+  - 'administer filters'
+  - 'administer image styles'
+  - 'administer menu'
+  - 'administer modules'
+  - 'administer node display'
+  - 'administer node fields'
+  - 'administer node form display'
+  - 'administer nodes'
+  - 'administer pathauto'
+  - 'administer permissions'
+  - 'administer profile'
+  - 'administer profile display'
+  - 'administer profile fields'
+  - 'administer profile form display'
+  - 'administer profile types'
+  - 'administer registration roles'
+  - 'administer responsive images'
+  - 'administer rest resources'
+  - 'administer site configuration'
+  - 'administer sitemap settings'
+  - 'administer software updates'
+  - 'administer stripe'
+  - 'administer taxonomy'
+  - 'administer taxonomy_term display'
+  - 'administer taxonomy_term fields'
+  - 'administer taxonomy_term form display'
+  - 'administer themes'
+  - 'administer url aliases'
+  - 'administer user display'
+  - 'administer user fields'
+  - 'administer user form display'
+  - 'administer users'
+  - 'administer views'
+  - 'administer webform'
+  - 'administer webform element access'
+  - 'administer webform submission'
+  - 'bulk delete aliases'
+  - 'bulk update aliases'
+  - 'bypass node access'
+  - 'cancel account'
+  - 'change own username'
+  - 'configure all event node layout overrides'
+  - 'configure any layout'
+  - 'configure editable event node layout overrides'
+  - 'create and edit custom blocks'
+  - 'create athlete_profile profile'
+  - 'create basic_page content'
+  - 'create event content'
+  - 'create event_address content'
+  - 'create terms in age_category'
+  - 'create terms in competition'
+  - 'create terms in division'
+  - 'create terms in event_type'
+  - 'create terms in weight_class_scm'
+  - 'create terms in weight_class_wrpf'
+  - 'create url aliases'
+  - 'create webform'
+  - 'create webform content'
+  - 'delete all revisions'
+  - 'delete all taxonomy revisions'
+  - 'delete any athlete_profile profile'
+  - 'delete any basic_page content'
+  - 'delete any event content'
+  - 'delete any event_address content'
+  - 'delete any file'
+  - 'delete any webform'
+  - 'delete any webform content'
+  - 'delete any webform submission'
+  - 'delete basic_page revisions'
+  - 'delete event revisions'
+  - 'delete event_address revisions'
+  - 'delete own athlete_profile profile'
+  - 'delete own basic_page content'
+  - 'delete own event content'
+  - 'delete own event_address content'
+  - 'delete own files'
+  - 'delete own webform'
+  - 'delete own webform content'
+  - 'delete own webform submission'
+  - 'delete term revisions in age_category'
+  - 'delete term revisions in competition'
+  - 'delete term revisions in division'
+  - 'delete term revisions in event_type'
+  - 'delete term revisions in weight_class_scm'
+  - 'delete term revisions in weight_class_wrpf'
+  - 'delete terms in age_category'
+  - 'delete terms in competition'
+  - 'delete terms in division'
+  - 'delete terms in event_type'
+  - 'delete terms in weight_class_scm'
+  - 'delete terms in weight_class_wrpf'
+  - 'delete webform revisions'
+  - 'delete webform submissions any node'
+  - 'delete webform submissions own node'
+  - 'edit any basic_page content'
+  - 'edit any event content'
+  - 'edit any event_address content'
+  - 'edit any webform'
+  - 'edit any webform content'
+  - 'edit any webform submission'
+  - 'edit entity sitemap settings'
+  - 'edit own basic_page content'
+  - 'edit own event content'
+  - 'edit own event_address content'
+  - 'edit own webform'
+  - 'edit own webform content'
+  - 'edit own webform submission'
+  - 'edit terms in age_category'
+  - 'edit terms in competition'
+  - 'edit terms in division'
+  - 'edit terms in event_type'
+  - 'edit terms in weight_class_scm'
+  - 'edit terms in weight_class_wrpf'
+  - 'edit webform assets'
+  - 'edit webform source'
+  - 'edit webform submissions any node'
+  - 'edit webform submissions own node'
+  - 'edit webform twig'
+  - 'edit webform variants'
+  - 'link to any page'
+  - 'notify of path changes'
+  - 'revert all revisions'
+  - 'revert all taxonomy revisions'
+  - 'revert basic_page revisions'
+  - 'revert event revisions'
+  - 'revert event_address revisions'
+  - 'revert term revisions in age_category'
+  - 'revert term revisions in competition'
+  - 'revert term revisions in division'
+  - 'revert term revisions in event_type'
+  - 'revert term revisions in weight_class_scm'
+  - 'revert term revisions in weight_class_wrpf'
+  - 'revert webform revisions'
+  - 'select account cancellation method'
+  - 'update any athlete_profile profile'
+  - 'update own athlete_profile profile'
+  - 'use text format basic_html'
+  - 'use text format webform_default'
+  - 'view all revisions'
+  - 'view all taxonomy revisions'
+  - 'view any athlete_profile profile'
+  - 'view any profile'
+  - 'view any webform submission'
+  - 'view basic_page revisions'
+  - 'view event revisions'
+  - 'view event_address revisions'
+  - 'view own athlete_profile profile'
+  - 'view own profile'
+  - 'view own unpublished content'
+  - 'view own unpublished profile'
+  - 'view own webform submission'
+  - 'view term revisions in age_category'
+  - 'view term revisions in competition'
+  - 'view term revisions in division'
+  - 'view term revisions in event_type'
+  - 'view term revisions in weight_class_scm'
+  - 'view term revisions in weight_class_wrpf'
+  - 'view the administration theme'
+  - 'view update notifications'
+  - 'view user email addresses'
+  - 'view vocabulary labels'
+  - 'view webform revisions'
+  - 'view webform submissions any node'
+  - 'view webform submissions own node'

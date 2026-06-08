@@ -1,0 +1,9 @@
+uuid: b5ed26bf-af93-4400-beae-dae7aa2bbc66
+langcode: en
+status: true
+dependencies: {  }
+name: 'Weight Class (WRPF)'
+vid: weight_class_wrpf
+description: 'Powerlifting weight classes for powerlifting'
+weight: 0
+new_revision: false

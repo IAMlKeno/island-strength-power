@@ -1,0 +1,28 @@
+uuid: d3dee4fe-7872-4837-bbae-d1d45006620f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - island_strength_power_theme
+id: island_strength_power_theme_pagetitle
+theme: island_strength_power_theme
+region: page_title
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      basic_page: basic_page
+      event_address: event_address

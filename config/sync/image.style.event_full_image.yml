@@ -1,0 +1,21 @@
+uuid: 2af55e54-7a86-4551-8314-d0608c55f780
+langcode: en
+status: true
+dependencies: {  }
+name: event_full_image
+label: 'Event Full Image'
+effects:
+  7dc5f221-bb60-4ec5-a8e1-574f549b0f9f:
+    uuid: 7dc5f221-bb60-4ec5-a8e1-574f549b0f9f
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp
+  36dd289d-12c4-4f28-b909-8b897085845e:
+    uuid: 36dd289d-12c4-4f28-b909-8b897085845e
+    id: image_scale
+    weight: 2
+    data:
+      width: 720
+      height: null
+      upscale: false

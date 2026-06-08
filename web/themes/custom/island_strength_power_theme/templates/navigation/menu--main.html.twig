@@ -1,0 +1,32 @@
+{#
+/**
+ * Default theme implementation to display a menu.
+ */
+#}
+{% import _self as menus %}
+
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul class="main-menu" id="main-menu" {{ attributes.addClass('menu', 'nav', 'navbar-nav') }}>
+    {% else %}
+      <ul class="submenu">
+    {% endif %}
+    {% for item in items %}
+      <li class="menu-item{{ menu_level == 0 and item.is_expanded ? ' expanded' : '' }}{{ item.is_active ? ' active' : '' }}"{% if item.url %} data-url="{{ item.url }}" {% endif %}>
+        {% if item.is_expanded %}
+          <a href="{{ item.url }}" class="menu-link">{{ item.title }} <span class="dropdown-toggle"></span></a>
+        {% else %}
+          <a href="{{ item.url }}" class="menu-link">{{ item.title }}</a>
+        {% endif %}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes.removeClass('nav', 'navbar-nav'), menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

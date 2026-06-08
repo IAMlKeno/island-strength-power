@@ -1,0 +1,14 @@
+uuid: 62dce6d0-e56f-4ba4-bf13-24a3a202b524
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.isp_admin
+  module:
+    - user
+id: user_add_role_action.isp_admin
+label: 'Add the ISP_Admin role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: isp_admin

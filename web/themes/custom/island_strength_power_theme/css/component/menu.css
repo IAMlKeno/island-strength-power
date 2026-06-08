@@ -1,0 +1,69 @@
+.main-header {
+  background-image: none!important;
+}
+
+
+.main-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+.main-menu .menu-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.main-menu .menu-item a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  font-size: 18px;
+}
+
+.main-menu .menu-item:hover {
+
+}
+
+/* Style the active menu item */
+.main-menu .menu-item.active a {
+}
+
+/* Dropdown indicator */
+.main-menu .menu-item.expanded .dropdown-toggle {
+  content: ' ▼';
+}
+
+/* Submenu styles */
+.submenu {
+  display: none; /* Hidden by default */
+  list-style: none;
+  padding-left: 20px;
+}
+
+.submenu .menu-item {
+  display: block;
+}
+
+.main-menu .menu-item.expanded > .submenu {
+  display: block; /* Show submenu when expanded */
+}
+
+.submenu .menu-item a {
+  color: #ccc;
+}
+
+.submenu .menu-item:hover {
+}
+
+@media only screen and (max-width: 600px) {
+  .main-menu .menu-item {
+    display: block;
+  }
+
+  .main-menu .menu-item a {
+    color: #078D92;
+  }
+}

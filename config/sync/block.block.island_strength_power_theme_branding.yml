@@ -1,0 +1,25 @@
+uuid: d2e4cf65-6de4-4a5d-a0f6-b033e02d65c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - island_strength_power_theme
+_core:
+  default_config_hash: I1mVPaNy2HynGDxN6quW2alTxwh2wpLrepeJZEQb5ww
+id: island_strength_power_theme_branding
+theme: island_strength_power_theme
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: Logo
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

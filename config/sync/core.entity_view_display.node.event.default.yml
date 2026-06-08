@@ -1,0 +1,377 @@
+uuid: 5710720c-523b-48b5-9426-37d8088ac170
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.field_banner_image
+    - field.field.node.event.field_event_date
+    - field.field.node.event.field_event_description
+    - field.field.node.event.field_event_location
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_location
+    - field.field.node.event.field_registration_form
+    - field.field.node.event.field_registration_price
+    - field.field.node.event.field_tested_price
+    - field.field.node.event.field_untested_price
+    - field.field.node.event.layout_builder__layout
+    - node.type.event
+  module:
+    - image
+    - layout_builder
+    - layout_discovery
+    - text
+    - user
+    - webform
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Event Title'
+          context_mapping: {  }
+        components:
+          4208bb7e-b9c0-4213-9851-3ce3f874f63e:
+            uuid: 4208bb7e-b9c0-4213-9851-3ce3f874f63e
+            region: content
+            configuration:
+              id: 'field_block:node:event:title'
+              label: 'Event Title'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: 'Promotion and Info'
+          context_mapping: {  }
+          column_widths: 67-33
+        components:
+          f7d87cd4-6bcb-46e7-bd5e-a67cfaa6634c:
+            uuid: f7d87cd4-6bcb-46e7-bd5e-a67cfaa6634c
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_banner_image'
+              label: 'Banner Image'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: event_full_image
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          b8e040eb-bf6e-447d-b214-b09b35cdf2fc:
+            uuid: b8e040eb-bf6e-447d-b214-b09b35cdf2fc
+            region: second
+            configuration:
+              id: 'field_block:node:event:field_event_date'
+              label: 'When: '
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: timestamp
+                label: hidden
+                settings:
+                  date_format: medium
+                  custom_date_format: ''
+                  timezone: ''
+                  tooltip:
+                    date_format: long
+                    custom_date_format: ''
+                  time_diff:
+                    enabled: false
+                    future_format: '@interval hence'
+                    past_format: '@interval ago'
+                    granularity: 2
+                    refresh: 60
+                    description: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          e92fa196-00f9-43c0-81ad-7a340e5c1af4:
+            uuid: e92fa196-00f9-43c0-81ad-7a340e5c1af4
+            region: second
+            configuration:
+              id: 'field_block:node:event:field_event_type'
+              label: 'What:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          e2ec3f4e-c982-402e-b70b-8ff836c5f132:
+            uuid: e2ec3f4e-c982-402e-b70b-8ff836c5f132
+            region: second
+            configuration:
+              id: 'field_block:node:event:field_event_location'
+              label: 'Where:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: teaser
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          2c3861f8-fcdf-49f4-a86e-8fd5117ab6e3:
+            uuid: 2c3861f8-fcdf-49f4-a86e-8fd5117ab6e3
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_tested_price'
+              label: 'Tested Price:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: number_decimal
+                label: hidden
+                settings:
+                  thousand_separator: ''
+                  decimal_separator: .
+                  scale: 2
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          b60520a9-b5f2-4e4b-b3d6-be434983a354:
+            uuid: b60520a9-b5f2-4e4b-b3d6-be434983a354
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_untested_price'
+              label: 'Untested Price:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: number_decimal
+                label: hidden
+                settings:
+                  thousand_separator: ''
+                  decimal_separator: .
+                  scale: 2
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          003288d3-ed42-4e87-9341-8a9084a2d4b2:
+            uuid: 003288d3-ed42-4e87-9341-8a9084a2d4b2
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_event_description'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          a7a7cce3-0158-4bdc-874b-252d7345a6c8:
+            uuid: a7a7cce3-0158-4bdc-874b-252d7345a6c8
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_registration_price'
+              label: 'Registration Price:'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: number_decimal
+                label: hidden
+                settings:
+                  thousand_separator: ''
+                  decimal_separator: .
+                  scale: 2
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Event Information'
+          context_mapping: {  }
+        components:
+          06733217-07fc-4609-a435-a0b3003576b6:
+            uuid: 06733217-07fc-4609-a435-a0b3003576b6
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_registration_form'
+              label: 'Registration Form'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: webform_entity_reference_entity_view
+                label: hidden
+                settings:
+                  source_entity: true
+                  lazy: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  field_banner_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_event_date:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_event_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
+    region: first
+  field_event_location:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_event_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_location:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_registration_form:
+    type: webform_entity_reference_entity_view
+    label: above
+    settings:
+      source_entity: true
+      lazy: false
+    third_party_settings: {  }
+    weight: 108
+    region: first
+  field_registration_price:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_tested_price:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 109
+    region: first
+  field_untested_price:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 110
+    region: first
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  layout_builder__layout: true

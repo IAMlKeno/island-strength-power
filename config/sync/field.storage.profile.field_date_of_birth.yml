@@ -1,0 +1,18 @@
+uuid: c2616b52-7b16-4bb4-acfd-bd9d1a73e7f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+id: profile.field_date_of_birth
+field_name: field_date_of_birth
+entity_type: profile
+type: timestamp
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

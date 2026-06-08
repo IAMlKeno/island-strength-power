@@ -1,0 +1,31 @@
+.block-field-blocknodeeventtitle {
+  font-weight: bold;
+  font-size: 32px;
+  margin: auto;
+  text-align: left;
+}
+
+article[class*="node--type-event"][class*="node--view-mode-teaser"]:not(.node--type-event-address) {
+  max-width: 70%;
+  margin: auto;
+}
+
+.node--view-mode-teaser div[class*="block-field-blocknodeeventfield-banner-image"] {
+  padding-top: 15px;
+}
+
+.node--view-mode-teaser div[class*="block-field-blocknodee"]:not(.block-field-blocknodeeventfield-banner-image) {
+  text-align: left;
+  padding-top: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .node--view-mode-teaser div[class*="block-field-blocknodee"]:not(.block-field-blocknodeeventfield-banner-image),
+  .node--view-mode-teaser div[class*="block-field-blocknodee"] {
+    text-align: center !important;
+  }
+}
+
+.events-teaser-view .views-row:nth-child(even) {
+  background-color: #B2A168;
+}

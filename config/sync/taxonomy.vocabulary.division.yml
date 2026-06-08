@@ -1,0 +1,9 @@
+uuid: 7facf171-d60e-4ce4-bf45-92c934301a5e
+langcode: en
+status: true
+dependencies: {  }
+name: Division
+vid: division
+description: 'The divisions within the federation'
+weight: 0
+new_revision: false

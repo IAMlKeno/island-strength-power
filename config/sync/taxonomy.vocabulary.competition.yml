@@ -1,0 +1,9 @@
+uuid: 5b671f93-afb4-47f2-9561-725749dd707f
+langcode: en
+status: true
+dependencies: {  }
+name: Competition
+vid: competition
+description: 'The competition types'
+weight: 0
+new_revision: false

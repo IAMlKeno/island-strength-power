@@ -1,0 +1,17 @@
+isp_stripe.payment:
+  path: '/isp-stripe/payment'
+  methods:
+    - POST
+  defaults:
+    _title: 'Stripe Payment'
+    _controller: '\Drupal\isp_stripe\Controller\IspStripeController::getStripeForm'
+  requirements:
+    _permission: 'access content'
+
+isp_stripe.isp_stripe:
+  path: '/isp-stripe/isp-stripe/{nid}'
+  defaults:
+    _title: 'Isp Stripe'
+    _form: 'Drupal\isp_stripe\Form\IspStripeForm'
+  requirements:
+    _permission: 'access content'

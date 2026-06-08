@@ -1,0 +1,8 @@
+# Custom library for general purposes.
+isp_module_theme:
+  css:
+    component:
+      css/app.css: {}
+  # dependencies:
+  #   - core/drupalSettings
+  #   - island_strength_power/example_2

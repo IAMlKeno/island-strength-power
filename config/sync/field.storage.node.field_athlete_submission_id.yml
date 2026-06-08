@@ -1,0 +1,21 @@
+uuid: 00286523-3a97-42a1-8bcc-9391f8a18914
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_athlete_submission_id
+field_name: field_athlete_submission_id
+entity_type: node
+type: string
+settings:
+  max_length: 10
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

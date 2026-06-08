@@ -1,0 +1,23 @@
+uuid: 6a6eee25-0377-483a-a609-2103e2e2607c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_amount
+    - node.type.reciept
+id: node.reciept.field_amount
+field_name: field_amount
+entity_type: node
+bundle: reciept
+label: Amount
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal

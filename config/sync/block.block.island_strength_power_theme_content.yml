@@ -1,0 +1,22 @@
+uuid: 95a185fb-a884-4bf4-af5a-0dbeeddfa7d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - island_strength_power_theme
+_core:
+  default_config_hash: jSZmBCcqYQr4kmUhNkVI9zUV2XDiMifu16gBSehH8jg
+id: island_strength_power_theme_content
+theme: island_strength_power_theme
+region: content
+weight: 1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,26 @@
+uuid: a13f0b2c-3daf-46e7-b126-e557351d875a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - island_strength_power_theme
+_core:
+  default_config_hash: Ge3b4MEySV2QvgdUJ31QrS8HgCK9PCxSYCLVt2mUVoU
+id: island_strength_power_theme_breadcrumbs
+theme: island_strength_power_theme
+region: breadcrumb
+weight: -100
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/events\r\n/event/*"

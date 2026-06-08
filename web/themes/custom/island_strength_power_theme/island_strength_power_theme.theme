@@ -1,0 +1,268 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
+use Drupal\system\Form\ThemeSettingsForm;
+
+/**
+ * @file
+ * Functions to support theming in the Island Strength and Power Theme theme.
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function island_strength_power_theme_theme_suggestions_alter(array &$suggestions, array $variables, $hook): void {
+  // foreach ($suggestions as &$suggestion) {
+  //   $suggestion = str_replace('drupal8_zymphonies_theme_', 'island_strength_power_theme_', $suggestion);
+  // }
+
+  $suggestions[] = $hook . '--' . 'custom';
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function island_strength_power_theme_theme($existing, $type, $theme, $path) {
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function island_strength_power_theme_preprocess_html(array &$variables): void {
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for page.html.twig.
+ */
+function island_strength_power_theme_preprocess_page(array &$variables): void {
+  $show_slideshow = theme_get_setting('show_slideshow','island_strength_power_theme') == 1;
+  $current_path = \Drupal::service('path.current')->getPath();
+  $result = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+  $page_list_str = theme_get_setting('show_on_pages','island_strength_power_theme');
+
+  if ($show_slideshow) {
+    $variables['show_slideshow'] = 1;
+    $variables['slider_content'] = island_strength_power_theme_get_slider_content();
+  }
+
+  $variables['instagram_url'] = theme_get_setting('instagram_url');
+
+  /**
+   * @var Drupal\Core\Session\AccountProxy
+   */
+  $user = \Drupal::service('current_user');
+  if (in_array('isp_admin', $user->getRoles())) {
+    $stripe_env = \Drupal::config('stripe.settings')->get('environment');
+    if (!empty($stripe_env)) {
+      $variables['is_isp_admin'] = true;
+      $variables['stripe_mode'] = "Note! Stripe is in <strong>\"$stripe_env\"</strong> mode <small>(visible to <i>admin only</i>)</small>";
+    }
+    else {
+      $variables['stripe_mode'] = "";
+    }
+  }
+
+}
+
+/**
+ * Slider
+ * Implements custom function for get slider content.
+ */
+function island_strength_power_theme_get_slider_content() {
+  $slider_content = array();
+  for ($i = 1; $i <= theme_get_setting('no_of_slides'); $i++) {
+    $path = NULL;
+    $fid = theme_get_setting('slide_image_path'.$i,'island_strength_power_theme');
+    if (!empty($fid)) {
+      $file = File::load($fid[0]);
+      if (!empty($file)) {
+        $uri = $file->getFileUri();
+        $path = \Drupal::service('file_url_generator')->generateAbsoluteString($uri);
+      }
+    }
+    if (empty($path)) {
+      $path = base_path() . \Drupal::service('extension.list.theme')->getPath('drupal8_zymphonies_theme') . theme_get_setting('slide_image_path_' . $i, 'drupal8_zymphonies_theme');
+    }
+
+    $slider_content[$i] = '<li>
+      <img src="' . $path . '" alt="Slider Banner" />
+      <div class="slider-caption">
+        <h2 class="slider-title">' . theme_get_setting('slide_title_' . $i, 'island_strength_power_theme').'</h2>
+        <div class="clearfix"><p class="slider-description">' . theme_get_setting('slide_description_' . $i, 'island_strength_power_theme').'</p></div>
+        <a href=' . theme_get_setting('slide_url_' . $i, 'island_strength_power_theme') . ' class="more-link">Read more</a>
+      </div>
+    </li>';
+  }
+  return $slider_content;
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function island_strength_power_theme_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+  if ($form['drupal8_zymphonies_theme_settings'] != NULL) unset($form['drupal8_zymphonies_theme_settings']);
+
+  //Slide show configure 
+  $form['island_strength_power_theme_settings']['slideshow'] = [
+    '#type' => 'details',
+    '#title' => t('Front page slideshow'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  ];
+  $form['island_strength_power_theme_settings']['slideshow']['no_of_slides'] = [
+    '#type' => 'textfield',
+    '#title' => t('Number of slides'),
+    '#default_value' => theme_get_setting('no_of_slides'),
+    '#description'  => t("Enter the number of slides required & Save configuration"),
+    '#markup' => '<div class="messages messages--warning">Clear caches after making any changes in theme settings. <a href="../../config/development/performance">Click here to clear cache</a></div>',
+  ];
+  $form['island_strength_power_theme_settings']['slideshow']['show_slideshow'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Show Slideshow'),
+    '#default_value' => theme_get_setting('show_slideshow'),
+    '#description'   => t("Show/Hide Slideshow in home page"),
+  ];
+  // REVISIT: convert to multi select list... (mobile friendly?) or list of checkboxes
+  $form['island_strength_power_theme_settings']['slideshow']['show_on_pages'] = [
+    '#type' => 'textfield',
+    '#title' => t('Show slider on these pages'),
+    '#default_value' => theme_get_setting('show_on_pages'),
+    '#description' => t('A comma separated list of pages to show the slider on. ex. /events,/about-us'),
+    '#states' => [
+        'visible' => [
+          ':input[name="show_slideshow"]' => ['checked' => TRUE],
+        ],
+      ],
+  ];
+
+  $form['island_strength_power_theme_settings']['slideshow']['slide'] = [
+    '#markup' => t('Change the banner image, title, description and link using below fieldset'),
+  ];
+  
+  for ($i = 1; $i <= theme_get_setting('no_of_slides'); $i++) {
+    $form['island_strength_power_theme_settings']['slideshow']['slide' . $i] = [
+      '#type' => 'details',
+      '#title' => t('Slide '.$i),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    ];
+    $form['island_strength_power_theme_settings']['slideshow']['slide' . $i]['slide_image_path' . $i] = [
+      '#type' => 'managed_file',
+      '#title' => t('Slide '.$i.' Image'),
+      '#default_value' => theme_get_setting('slide_image_path'.$i,'island_strength_power_theme'),
+      '#upload_location' => 'public://',
+    ];
+    $form['island_strength_power_theme_settings']['slideshow']['slide' . $i]['slide_title_' . $i] = [
+      '#type' => 'textfield',
+      '#title' => t('Slide '.$i.' Title'),
+      '#default_value' => theme_get_setting('slide_title_' . $i,'island_strength_power_theme'),
+    ];
+    $form['island_strength_power_theme_settings']['slideshow']['slide' . $i]['slide_description_' . $i] = [
+      '#type' => 'textarea',
+      '#title' => t('Slide '.$i.' Description'),
+      '#default_value' => theme_get_setting('slide_description_' . $i,'island_strength_power_theme'),
+    ];
+    $form['island_strength_power_theme_settings']['slideshow']['slide' . $i]['slide_url_' . $i] = [
+      '#type' => 'textfield',
+      '#title' => t('Slide '.$i.' URL'),
+      '#default_value' => theme_get_setting('slide_url_' . $i,'island_strength_power_theme'),
+    ];
+
+    // Make the uploaded images permanent.
+    $image = theme_get_setting('slide_image_path'.$i,'island_strength_power_theme');
+    if (!empty($image)) {
+      $file = File::load($image[0]);
+
+      if (!empty($file)) {
+        $file->setPermanent();
+        $file->save();
+        $file_usage = \Drupal::service('file.usage');
+        $file_usage_check = $file_usage->listUsage($file);
+        if (empty($file_usage_check)) {
+          $file_usage->add($file, 'island_strength_power_theme', 'theme', $image[0]);
+        }
+      }
+    }
+
+  }
+  
+  //Social Icon Link
+  $form['island_strength_power_theme_settings']['social_icon'] = [
+    '#type' => 'details',
+    '#title' => t('Social Media Link'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  ];
+  $form['island_strength_power_theme_settings']['social_icon']['show_social_icon'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Show Social Icons'),
+    '#default_value' => theme_get_setting('show_social_icon'),
+    '#description'   => t("Show/Hide social media links"),
+  ];
+  $form['island_strength_power_theme_settings']['social_icon']['instagram_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('Instagram Link'),
+    '#default_value' => theme_get_setting('instagram_url'),
+  ];
+  $form['island_strength_power_theme_settings']['social_icon']['facebook_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('Facebook Link'),
+    '#default_value' => theme_get_setting('facebook_url'),
+  ];
+  $form['island_strength_power_theme_settings']['social_icon']['twitter_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('Twitter Link'),
+    '#default_value' => theme_get_setting('twitter_url'),
+  ];
+  $form['island_strength_power_theme_settings']['social_icon']['linkedin_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('Linkedin Link'),
+    '#default_value' => theme_get_setting('linkedin_url'),
+  ];
+  $form['island_strength_power_theme_settings']['social_icon']['pinterest_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('Pinterest Link'),
+    '#default_value' => theme_get_setting('pinterest_url'),
+  ];
+  $form['island_strength_power_theme_settings']['social_icon']['rss_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('RSS Link'),
+    '#default_value' => theme_get_setting('rss_url'),
+  ];
+  $form['island_strength_power_theme_settings']['copyright'] = [
+    '#type' => 'details',
+    '#title' => t('Copyright'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  ];
+  $form['island_strength_power_theme_settings']['copyright']['copyright_text'] = [
+    '#type' => 'textfield',
+    '#title' => t('Enter copyright text'),
+    '#default_value' => theme_get_setting('copyright_text'),
+  ];
+
+  //Show/Hide credit
+  $form['island_strength_power_theme_settings']['credit_link'] = [
+    '#type' => 'details',
+    '#title' => t('Credit'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  ];
+  $form['island_strength_power_theme_settings']['credit_link']['show_credit_link'] = [
+    '#type' => 'checkbox',
+    '#title' => t("Show/hide credit text"),
+    '#default_value' => theme_get_setting('show_credit_link'),
+    '#description'   => t("Zymphonies recommend you to display credit in footer"),
+  ];
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function island_strength_power_theme_preprocess_node(array &$variables): void {
+}

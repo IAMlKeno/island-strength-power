@@ -1,0 +1,51 @@
+features:
+  node_user_picture: false
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+logo:
+  use_default: 0
+  path: 'public://island_strength_power.png'
+favicon:
+  use_default: 0
+  path: 'public://island_strengt_power_0.png'
+  mimetype: image/png
+no_of_slides: '3'
+show_slideshow: 1
+show_social_icon: 1
+facebook_url: 'https://www.facebook.com/p/Island-Strength-Power-100083332562797/'
+twitter_url: ''
+linkedin_url: ''
+pinterest_url: ''
+rss_url: ''
+copyright_text: ''
+show_credit_link: 0
+slide_image_path1:
+  - '163'
+slide_title_1: 'Upcoming WRPF Powerlifting Competition'
+slide_description_1: 'The Island Barbell Battle 2026'
+slide_url_1: '#'
+slide_image_path2:
+  - '165'
+slide_title_2: '2026 SCC Atlantics'
+slide_description_2: 'SCC Atlantics is coming back to PEI this summer! Stay tuned for more details. '
+slide_url_2: '#'
+slide_image_path3:
+  - '164'
+slide_title_3: 'Personal Training'
+slide_description_3: 'Want some help taking your lifting to the next level? Be it strongman or powerlifting, let us help you smash some goals!'
+slide_url_3: '#'
+slide_image_path4: {  }
+slide_title_4: ''
+slide_description_4: ''
+slide_url_4: '#'
+slide_image_path5: {  }
+slide_title_5: 'Personal Training'
+slide_description_5: 'Personal Training'
+slide_url_5: '#'
+slide_image_path6: {  }
+slide_title_6: ''
+slide_description_6: ''
+slide_url_6: ''
+show_on_pages: '/events,/about-us'
+instagram_url: 'https://www.instagram.com/islandstrengthandpower/'

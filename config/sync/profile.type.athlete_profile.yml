@@ -1,0 +1,13 @@
+uuid: 1f55577e-e515-4bef-9102-736403cdb0e5
+langcode: en
+status: true
+dependencies: {  }
+id: athlete_profile
+label: 'Athlete Profile'
+display_label: 'My Profile'
+multiple: false
+registration: true
+roles:
+  authenticated: authenticated
+allow_revisions: false
+new_revision: false

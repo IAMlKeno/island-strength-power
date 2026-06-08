@@ -1,0 +1,29 @@
+uuid: 22072ef2-ed55-4abb-b5cc-e7fd0151701c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_preferred_weight_class
+    - profile.type.athlete_profile
+    - taxonomy.vocabulary.weight_class_wrpf
+id: profile.athlete_profile.field_preferred_weight_class
+field_name: field_preferred_weight_class
+entity_type: profile
+bundle: athlete_profile
+label: 'Preferred Powerlifting Weight Class'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      weight_class_wrpf: weight_class_wrpf
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

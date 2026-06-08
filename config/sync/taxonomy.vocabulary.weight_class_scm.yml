@@ -1,0 +1,9 @@
+uuid: c718eeec-1454-4e51-9957-927861be3a16
+langcode: en
+status: true
+dependencies: {  }
+name: 'Weight Class (SCM)'
+vid: weight_class_scm
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,18 @@
+uuid: d697261b-ed9b-4333-bad4-f9d0879f9739
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Event Address'
+type: event_address
+description: 'Possible locations for events'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

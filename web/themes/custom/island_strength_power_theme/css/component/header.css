@@ -1,0 +1,19 @@
+.main-header {
+  background-color: #fff!important;
+  color: #fff;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  background-size: cover;
+  position: relative;
+}
+
+a.site-branding__logo > img {
+  max-width: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+  a.site-branding__logo > img {
+    border-radius: 90%;
+    max-width: 30%;
+  }
+}

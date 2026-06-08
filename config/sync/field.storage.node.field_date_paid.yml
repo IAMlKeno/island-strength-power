@@ -1,0 +1,18 @@
+uuid: 58c3656b-03c1-41ee-8d6c-c0db5ccd74c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_date_paid
+field_name: field_date_paid
+entity_type: node
+type: timestamp
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,24 @@
+uuid: 2b35c2f6-1f9b-4e47-a657-637e65e03c76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.reciept
+  module:
+    - text
+id: node.reciept.body
+field_name: body
+entity_type: node
+bundle: reciept
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

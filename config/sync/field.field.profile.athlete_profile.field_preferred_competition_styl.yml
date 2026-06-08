@@ -1,0 +1,29 @@
+uuid: 0fa1a56e-6185-49f7-9980-363435c03eca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_preferred_competition_styl
+    - profile.type.athlete_profile
+    - taxonomy.vocabulary.event_type
+id: profile.athlete_profile.field_preferred_competition_styl
+field_name: field_preferred_competition_styl
+entity_type: profile
+bundle: athlete_profile
+label: 'Preferred Competition Style'
+description: 'What type of competition do you prefer?'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event_type: event_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

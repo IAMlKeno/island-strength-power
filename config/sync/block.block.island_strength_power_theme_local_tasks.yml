@@ -1,0 +1,22 @@
+uuid: 8eeabc44-2557-47e2-b2a5-9a8458a99659
+langcode: en
+status: true
+dependencies:
+  theme:
+    - island_strength_power_theme
+_core:
+  default_config_hash: CeX8gBzRbvuWRaO-6eYv6EF41FgANiqNOeHpq2U2G60
+id: island_strength_power_theme_local_tasks
+theme: island_strength_power_theme
+region: auto_hidden_block
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

@@ -1,0 +1,87 @@
+uuid: cbaa6899-0fab-4206-a7f6-b00cb6d710e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.profile.athlete_profile.field_date_of_birth
+    - field.field.profile.athlete_profile.field_first_name
+    - field.field.profile.athlete_profile.field_last_name
+    - field.field.profile.athlete_profile.field_phone_number
+    - field.field.profile.athlete_profile.field_preferred_competition_styl
+    - field.field.profile.athlete_profile.field_preferred_strongman_weight
+    - field.field.profile.athlete_profile.field_preferred_weight_class
+    - profile.type.athlete_profile
+id: profile.athlete_profile.default
+targetEntityType: profile
+bundle: athlete_profile
+mode: default
+content:
+  field_date_of_birth:
+    type: timestamp
+    label: above
+    settings:
+      date_format: html_date
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: html_date
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+        description: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_first_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_phone_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_preferred_competition_styl:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_preferred_strongman_weight:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_preferred_weight_class:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

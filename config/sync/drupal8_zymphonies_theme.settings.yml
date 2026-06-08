@@ -1,0 +1,53 @@
+_core:
+  default_config_hash: LbJ2zMBQH-C-eZLWF7dimgfQDZFdZCEpr--VsIDmTFI
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+  logo: true
+  name: true
+  node_user_picture: true
+  slogan: true
+facebook_url: 'https://www.facebook.com/p/Island-Strength-Power-100083332562797/'
+twitter_url: ''
+google_plus_url: 'https://plus.google.com/+ZymphoniesTechnologies'
+linkedin_url: ''
+pinterest_url: ''
+rss_url: rss.xml
+copyright_text: 'Copyright 2020· All rights reserved'
+show_social_icon: 1
+show_credit_link: 1
+show_slideshow: 0
+no_of_slides: '4'
+slide_title_1: Powerlifting
+slide_description_1: 'Hosting powerlifting competitions under the <a href="https://www.wrpfcan.ca/" target="_blank">WRPF federation</a>'
+slide_url_1: '#'
+slide_image_path_1: /images/slider/slide_01.jpg
+slide_title_2: Strongman
+slide_description_2: 'Hosting strongman competitions'
+slide_url_2: '#'
+slide_image_path_2: /images/slider/slide_02.jpg
+slide_title_3: Training
+slide_description_3: 'Offering group training for strongman and also personal training for both strongman and powerlifting'
+slide_url_3: '#'
+slide_image_path_3: /images/slider/slide_03.jpg
+logo:
+  use_default: 1
+  path: 'public://wtebglogo.jpg'
+favicon:
+  use_default: 1
+slide_image_path1: {  }
+slide_image_path2: {  }
+slide_image_path3: {  }
+slide_image_path4: {  }
+slide_title_4: 'Contest Prep'
+slide_description_4: 'Contest prep with Kaelan'
+slide_url_4: '#'
+slide_image_path5: {  }
+slide_title_5: ''
+slide_description_5: ''
+slide_url_5: ''
+slide_image_path6: {  }
+slide_title_6: ''
+slide_description_6: ''
+slide_url_6: ''

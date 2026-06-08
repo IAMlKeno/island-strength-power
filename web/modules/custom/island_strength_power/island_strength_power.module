@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Custom hook functions.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_form_alter()
+ */
+function island_strength_power_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (preg_match('/webform_submission_(.*signup_form|.*registration_form)/', $form_id)) {
+  }
+
+  if ($form_id == 'profile_athlete_profile_edit_form') {
+    remove_time_element($form);
+  }
+
+  if (preg_match('/node_.*_form/', $form_id)) {
+    if (!empty($form['promote']['widget']['value']['#default_value'])) {
+      $form['promote']['widget']['value']['#default_value'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function island_strength_power_form_user_register_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  prepend_signin_option($form);
+  remove_time_element($form['athlete_profile_profiles']['widget'][0]['entity']);
+  $form['account']['#attached']['library'][] = 'island_strength_power/isp_module_theme';
+}
+
+/**
+ * This function attempts to prepend the signin markup.
+ */
+function prepend_signin_option(&$form) {
+  array_unshift($form['account'], [
+    'sign_in' => [
+      '#type' => 'item',
+      '#markup' => '<div class="sign_in_prompt">Already have an account? <a href="/user/login">Sign in here</a></div>',
+    ],
+  ]);
+}
+
+/**
+ * Simply removes the time element from the datetime array.
+ *
+ * @param array $form
+ *   The form to update.
+ */
+function remove_time_element(array &$form) {
+  if (!empty($form['field_date_of_birth'])) {
+    $form['field_date_of_birth']['widget'][0]['value']['#date_date_element'] = 'date';
+    $form['field_date_of_birth']['widget'][0]['value']['#date_time_element'] = 'none';
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function island_strength_power_mail(string $key, &$message, array $params): void {
+  $options = [
+    'langcode' => $message['langcode'] ?? 'en',
+  ];
+
+  $params['event_name'] = $params['event_name'] ?? 'EVENT';
+  $params['receipt'] = $params['receipt'] ?? 'The receipt';
+
+  switch ($key) {
+    case 'receipt':
+      $message['headers']['Content-Type'] = 'text/html';
+      $message['headers']['MIME-Version'] = '1.0';
+      $message['subject'] = t('Receipt for event: @event', ['@event' => $params['event_name']], $options);
+      $message['body'][] = t('Thank you for registering for the event: "@event"', ['@event' => $params['event_name']], $options);
+      $message['body'][] = $params['receipt']; // Markup
+      break;
+  }
+}

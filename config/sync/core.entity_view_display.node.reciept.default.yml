@@ -1,0 +1,85 @@
+uuid: f0e03374-2e16-48a7-a6e8-c7287591c4eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.reciept.body
+    - field.field.node.reciept.field_amount
+    - field.field.node.reciept.field_athlete_submission_id
+    - field.field.node.reciept.field_date_paid
+    - field.field.node.reciept.field_event_id
+    - field.field.node.reciept.field_event_name
+    - field.field.node.reciept.field_transaction_number
+    - node.type.reciept
+  module:
+    - text
+    - user
+id: node.reciept.default
+targetEntityType: node
+bundle: reciept
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_amount:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_athlete_submission_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_date_paid:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_event_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_transaction_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_event_id: true
+  links: true

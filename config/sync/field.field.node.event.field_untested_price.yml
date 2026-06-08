@@ -1,0 +1,23 @@
+uuid: 898b6ea2-cead-49f9-9e92-bbbcefe3ddee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_untested_price
+    - node.type.event
+id: node.event.field_untested_price
+field_name: field_untested_price
+entity_type: node
+bundle: event
+label: 'Untested Price'
+description: 'For powerlifting events'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal

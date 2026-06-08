@@ -1,0 +1,14 @@
+uuid: 3f8d9d97-ab5e-4e72-ae03-b9b88e8464e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.isp_admin
+  module:
+    - user
+id: user_remove_role_action.isp_admin
+label: 'Remove the ISP_Admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: isp_admin

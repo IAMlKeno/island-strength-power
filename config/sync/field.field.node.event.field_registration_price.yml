@@ -1,0 +1,23 @@
+uuid: 4a23dcc3-01cb-43a5-90a5-ee7bca919d39
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_registration_price
+    - node.type.event
+id: node.event.field_registration_price
+field_name: field_registration_price
+entity_type: node
+bundle: event
+label: 'Registration Price'
+description: "For strongman and unsanctioned events. Leave tested and untested fields blank if you're using this."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1.0
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,10 @@
+adding:
+  smtp_username: elkenojones@gmail.com
+  smtp_from: elkenojones@gmail.com
+  smtp_test_address: elkenojones@gmail.com
+  smtp_debugging: false
+removing:
+  smtp_username: islandstrengthandpower@gmail.com
+  smtp_from: islandstrengthandpower@gmail.com
+  smtp_test_address: ''
+  smtp_debugging: true

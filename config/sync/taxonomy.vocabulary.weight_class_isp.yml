@@ -1,0 +1,9 @@
+uuid: 18d04f77-bcfb-4841-ba5e-811cb6268762
+langcode: en
+status: true
+dependencies: {  }
+name: 'Weight Class ISP'
+vid: weight_class_isp
+description: 'Unsanctioned Weight Classes'
+weight: 0
+new_revision: false

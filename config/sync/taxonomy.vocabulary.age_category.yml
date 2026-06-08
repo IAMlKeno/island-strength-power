@@ -1,0 +1,9 @@
+uuid: 05d8cbb6-2cd6-4f35-9490-a64c02576b57
+langcode: en
+status: true
+dependencies: {  }
+name: 'Age Category'
+vid: age_category
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,19 @@
+uuid: 614fe001-b125-4cc5-914b-d4effc5478c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_name
+    - node.type.reciept
+id: node.reciept.field_event_name
+field_name: field_event_name
+entity_type: node
+bundle: reciept
+label: 'Event Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

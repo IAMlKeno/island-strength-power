@@ -1,0 +1,18 @@
+uuid: e9b48da3-bfde-45c8-9ce7-f2ffaa6c5aef
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Reciept
+type: reciept
+description: 'ISP cms copies of reciepts'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,156 @@
+<?php
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_form_alter()
+ */
+function isp_stripe_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (preg_match('/webform_submission_(.*signup_form|.*registration_form|wrpf_powerlifting_registration.*|scm.*registration.*)/', $form_id)) {
+    $form['#attached']['library'][] = 'isp_stripe/everything_stripe';
+
+    $form['actions']['register_pay'] = [
+      '#type' => 'button',
+      '#value' => t('Pay and register'),
+      '#ajax' => [
+        'callback' => 'isp_stripe_callback',
+        'event' => 'click',
+        'prevent' => 'submit',
+        'progress' => [
+            'type' => 'throbber',
+            'message' => t('Processing...'),
+        ],
+      ],
+      '#attributes' => [
+        'data-type' => 'data-stripe-init',
+      ],
+    ];
+    $form['actions']['submit']['#attributes']['data-stripe-submit'] = 'stripe-webform-submit-button';
+    $form['actions']['submit']['#attributes']['class'][] = 'hidden';
+
+    $form['#attributes']['data-stripe-form-id'] = $form['#webform_id'];
+
+    $total_display = [
+      'charge_amount' => [
+        '#type' => 'item',
+        '#markup' => '<div class="charge-amount-container">You will be charged: $<span id="charge-amount-content">0.00</span>CAD</div>',
+      ]
+    ];
+
+    array_unshift($form['actions'], $total_display);
+
+    $current_user_service = \Drupal::service('current_user');
+    $roles = $current_user_service->getRoles();
+
+    if (array_intersect(['isp_admin', 'administrator'], $roles)) {
+      $form['#attached']['library'][] = 'isp_stripe/skip_stripe';
+      $form['actions']['skip_register_pay'] = [
+        '#type' => 'submit',
+        '#title' => t('Skip payment and register'),
+        '#value' => t('Skip Paymentt'),
+        '#ajax' => [
+          'callback' => 'isp_skip_stripe',
+          'event' => 'click',
+          'prevent' => 'submit',
+          'progress' => [
+              'type' => 'throbber',
+              'message' => t('Checking form...'),
+          ],
+        ],
+      ];
+      $form['actions']['skip_register_pay']['#attributes']['class'][] = 'register-skip-payment';
+      $form['actions']['skip_register_pay']['#attributes']['class'][] = 'webform-button--submit';
+      $form['actions']['skip_register_pay']['#attributes']['class'][] = 'button--primary';
+    }
+  }
+}
+
+function isp_skip_stripe(&$form, FormStateInterface $form_state, $request) {
+  $args = ['hasErrors' => $form_state->hasAnyErrors()];
+  $ajax = new AjaxResponse();
+  $ajax->addCommand(new InvokeCommand(NULL, 'skipStripePayment', [$args]));
+
+  return $ajax;
+}
+
+function isp_stripe_callback(&$form, FormStateInterface $form_state, $request) {
+  $hasErrors = $form_state->hasAnyErrors();
+  $stripe_settings = ['hasErrors' => $hasErrors,];
+
+  if (!$hasErrors) {
+    /* Using getUserInput to get a proper count of entity checkbox items user selects /*/
+    $form_values = $form_state->getUserInput();
+    $params = [
+      'event' => $form_values['event'],
+      'ages' => !empty($form_values['age_category'])
+          ? count(
+                array_filter((array) $form_values['age_category']))
+          : 1,
+      'competitions' => !empty($form_values['competition'])
+          ? count(
+                array_filter((array) $form_values['competition']))
+          : 1,
+      'isTested' => !empty($form_values['tested_or_untested'])
+          ? strpos($form_values['tested_or_untested'], 'Tested') !== FALSE
+          : FALSE,
+    ];
+    $amount = !empty($params) ? calculate_total($params) : 0;
+    $stripe_wrapper = \Drupal::service('stripe_webform_payment.stripe');
+    $client_secret = $stripe_wrapper->getClientSecret(floatval($amount) * 100, 'cad');
+    $stripe_settings['publishableKey'] = $stripe_wrapper->getPublishableKey();
+    $stripe_settings['clientSecret'] = $client_secret['clientSecret'] ?? '';
+    $stripe_settings['webformId'] = $form['#webform_id'];
+    $stripe_settings['clientEmail'] = $form_state->getValue('e_mail') ?? $form_state->getValue('email');
+    $stripe_settings['clientName'] = $form_state->getValue('first_name') . ' ' . $form_state->getValue('last_name');
+  }
+
+  $ajax = new AjaxResponse();
+  $ajax->addCommand(new InvokeCommand(NULL, 'myAjaxCallback', [$stripe_settings]));
+
+  return $ajax;
+}
+
+function get_event_price($nid, bool $isTested): string|null {
+  $node = Node::load($nid);
+
+  if ($node) {
+    if ($isTested && $node->hasField('field_tested_price')) {
+      return $node->get('field_tested_price')->value;
+    }
+    else {
+      $untested = $node->get('field_untested_price')->value;
+      if ($untested != null) {
+        return $untested;
+      }
+      else {
+        return $node->get('field_registration_price')->value;
+      }
+    }
+  }
+
+  return '0';
+}
+
+/**
+ * @param array $params
+ *   containing event: nid, ages: int, competitions: int, isTested: bool
+ *
+ * @return float
+ *   Cost to register
+ */
+function calculate_total(array $params): float {
+  $total = 0;
+  $total += get_event_price($params['event'], $params['isTested']);
+
+  if (!empty($params['ages']) && $params['ages'] > 1) {
+    $total += ($params['ages'] - 1) * 30;
+  }
+  if (!empty($params['competitions']) && $params['competitions'] > 1) {
+    $total += ($params['competitions'] - 1) * 30;
+  }
+
+  return $total;
+}

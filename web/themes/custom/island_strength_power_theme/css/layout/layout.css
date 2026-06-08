@@ -1,0 +1,30 @@
+.views-exposed-form {
+  border-bottom: 2px solid;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.form-item, .form-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.views-exposed-form .form-item label {
+  display: block;
+  margin-bottom: 0px!important;
+}
+
+.views-data-export-feed {
+  display: inline-block;
+  position: absolute;
+  top: -14px;
+  right: 0;
+}
+
+.events-teaser-view {
+  border-top: 3px solid;
+  padding-top: 15px;
+}

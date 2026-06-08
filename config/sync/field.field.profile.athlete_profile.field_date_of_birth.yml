@@ -1,0 +1,24 @@
+uuid: 5b6fd0cb-1728-43e1-895c-95581c1e3e12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_date_of_birth
+    - profile.type.athlete_profile
+  module:
+    - profile
+third_party_settings:
+  profile:
+    profile_private: true
+id: profile.athlete_profile.field_date_of_birth
+field_name: field_date_of_birth
+entity_type: profile
+bundle: athlete_profile
+label: 'Date of Birth'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,14 @@
+uuid: 39e6d3e6-a4c2-4660-a015-adcd9b0e8c20
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.isp_athlete
+  module:
+    - user
+id: user_add_role_action.isp_athlete
+label: 'Add the ISP_Athlete role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: isp_athlete
