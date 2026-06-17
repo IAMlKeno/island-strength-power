@@ -10,7 +10,7 @@ favicon:
   use_default: 0
   path: 'public://island_strengt_power_0.png'
   mimetype: image/png
-no_of_slides: '3'
+no_of_slides: '1'
 show_slideshow: 1
 show_social_icon: 1
 facebook_url: 'https://www.facebook.com/p/Island-Strength-Power-100083332562797/'
@@ -21,14 +21,13 @@ rss_url: ''
 copyright_text: ''
 show_credit_link: 0
 slide_image_path1:
-  - '163'
-slide_title_1: 'Upcoming WRPF Powerlifting Competition'
-slide_description_1: 'The Island Barbell Battle 2026'
+  - '175'
+slide_title_1: 'SCC Atlantics 2026'
+slide_description_1: 'SCC Atlantics is coming back to PEI July 18, 2026'
 slide_url_1: '#'
-slide_image_path2:
-  - '165'
-slide_title_2: '2026 SCC Atlantics'
-slide_description_2: 'SCC Atlantics is coming back to PEI this summer! Stay tuned for more details. '
+slide_image_path2: {  }
+slide_title_2: ''
+slide_description_2: ''
 slide_url_2: '#'
 slide_image_path3:
   - '164'

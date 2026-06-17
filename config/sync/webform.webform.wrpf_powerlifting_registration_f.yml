@@ -61,8 +61,9 @@ elements: |-
       '#required': true
     mailing_address:
       '#type': textarea
-      '#title': 'Mailing Address'
+      '#title': 'Province '
       '#autocomplete': address-line1
+      '#required': true
   biometric:
     '#type': webform_flexbox
     gender:
