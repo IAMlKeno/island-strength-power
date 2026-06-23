@@ -91,14 +91,20 @@ function island_strength_power_theme_get_slider_content() {
       $path = base_path() . \Drupal::service('extension.list.theme')->getPath('drupal8_zymphonies_theme') . theme_get_setting('slide_image_path_' . $i, 'drupal8_zymphonies_theme');
     }
 
-    $slider_content[$i] = '<li>
-      <img src="' . $path . '" alt="Slider Banner" />
-      <div class="slider-caption">
-        <h2 class="slider-title">' . theme_get_setting('slide_title_' . $i, 'island_strength_power_theme').'</h2>
-        <div class="clearfix"><p class="slider-description">' . theme_get_setting('slide_description_' . $i, 'island_strength_power_theme').'</p></div>
-        <a href=' . theme_get_setting('slide_url_' . $i, 'island_strength_power_theme') . ' class="more-link">Read more</a>
-      </div>
-    </li>';
+    $slide_title = theme_get_setting('slide_title_' . $i, 'island_strength_power_theme');
+    $slide_description = theme_get_setting('slide_description_' . $i, 'island_strength_power_theme');
+
+    $slider_content[$i] = <<<HTML
+<div data-slide style="opacity: 0; transition: opacity 0.6s ease;">
+  <div class="carousel-image">
+    <img src="{$path}" alt="Slider Banner" />
+  </div>
+  <h3 class="carousel-title">$slide_title</h3>
+  <p class="carousel-description">
+    $slide_description
+  </p>
+</div>
+HTML;
   }
   return $slider_content;
 }

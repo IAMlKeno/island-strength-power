@@ -49,47 +49,27 @@
         <button class="btn-secondary">Learn More</button>
       </div>
     </div>
-    
+
     <!-- Featured Classes Carousel -->
     <div class="carousel-mini" data-carousel>
-      <div data-slide style="opacity: 0; transition: opacity 0.6s ease;">
-        <div class="carousel-image">💪</div>
-        <h3 class="carousel-title">Strength Foundations</h3>
-        <p class="carousel-schedule">Mon, Wed, Fri • 6:00 PM</p>
-        <p class="carousel-description">Build solid foundations with progressive strength training. Perfect for beginners and experienced lifters.</p>
-        <div class="carousel-controls">
-          <button class="carousel-btn" data-carousel-prev>←</button>
-          <button class="carousel-btn" data-carousel-next>→</button>
-        </div>
+      {% for slider_contents in slider_content %}
+        {{ slider_contents | raw }}
+      {% endfor %}
+
+      <!-- Carousel Controls -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" data-carousel-prev>←</button>
+        <button class="carousel-btn" data-carousel-next>→</button>
       </div>
-      
-      <div data-slide style="opacity: 0; transition: opacity 0.6s ease; display: none;">
-        <div class="carousel-image">🏋️</div>
-        <h3 class="carousel-title">Power & Conditioning</h3>
-        <p class="carousel-schedule">Tue, Thu • 5:00 PM</p>
-        <p class="carousel-description">Explosive power development combined with functional conditioning for athletic performance.</p>
-        <div class="carousel-controls">
-          <button class="carousel-btn" data-carousel-prev>←</button>
-          <button class="carousel-btn" data-carousel-next>→</button>
-        </div>
-      </div>
-      
-      <div data-slide style="opacity: 0; transition: opacity 0.6s ease; display: none;">
-        <div class="carousel-image">⚡</div>
-        <h3 class="carousel-title">Competition Prep</h3>
-        <p class="carousel-schedule">Sat • 10:00 AM</p>
-        <p class="carousel-description">Specialized training for lifters preparing for powerlifting and strength competitions.</p>
-        <div class="carousel-controls">
-          <button class="carousel-btn" data-carousel-prev>←</button>
-          <button class="carousel-btn" data-carousel-next>→</button>
-        </div>
-      </div>
-      
+
       <!-- Carousel Indicators -->
       <div class="carousel-controls" style="margin-top: 16px;">
-        <button class="carousel-dot active" data-carousel-dot></button>
-        <button class="carousel-dot" data-carousel-dot></button>
-        <button class="carousel-dot" data-carousel-dot></button>
+        {% for slider_contents in slider_content %}
+          {% if loop.first %}
+            <button class="carousel-dot active" data-carousel-dot></button>
+          {% endif %}
+          <button class="carousel-dot" data-carousel-dot></button>
+        {% endfor %}
       </div>
     </div>
   </div>
