@@ -294,3 +294,7 @@ function island_strength_power_theme_preprocess_block__system_branding_block(arr
   $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
   $variables['site_logo'] = theme_get_setting('logo.url');
 }
+
+function island_strength_power_theme_preprocess_menu__main(array &$variables): void {
+  $variables['is_logged_in'] = \Drupal::service('current_user')->isAuthenticated();
+}

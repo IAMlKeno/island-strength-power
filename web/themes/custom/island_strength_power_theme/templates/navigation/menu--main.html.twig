@@ -5,9 +5,8 @@
 #}
 {% import _self as menus %}
 
-{{ menus.menu_links(items, attributes, 0) }}
-
-{% macro menu_links(items, attributes, menu_level) %}
+{{ menus.menu_links(items, attributes, 0, is_logged_in) }}
+{% macro menu_links(items, attributes, menu_level, is_logged_in) %}
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
@@ -27,6 +26,13 @@
         {% endif %}
       </li>
     {% endfor %}
+      <li class="menu-item">
+        {% if is_logged_in %}
+          <a class="login-btn" href="/user/logout">Logout</a>
+        {% else %}
+          <a class="login-btn" href="/user/login">Login</a>
+        {% endif %}
+      </li>
     </ul>
   {% endif %}
 {% endmacro %}
