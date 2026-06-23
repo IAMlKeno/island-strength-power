@@ -2,9 +2,11 @@
 global:
   js:
     js/island-strength-power-theme.js: {}
+    js/carousel.js: {}
     https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js: { type: external, minified: true }
   css:
     base:
+      css/modern-design-system.css: {}
       css/base/elements.css: {}
     component:
       css/component/block.css: {}
@@ -30,4 +32,13 @@ global:
     - core/drupal
     - core/drupalSettings
     - core/jquery
+
+google-fonts:
+  remote: https://fonts.google.com
+  license:
+    name: SIL Open Font License, 1.1
+    url: https://sil.org
+  css:
+    theme:
+      //://googleapis.com: { type: external, minified: true }
 

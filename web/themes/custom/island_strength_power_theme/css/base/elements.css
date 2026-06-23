@@ -1,10 +1,15 @@
 body {
-  background-color: #c3b68a !important;
+  font-family: 'Inter', sans-serif;
+  color: #2D3748; /* Off-black/dark grey is easier on the eyes than pure black */
+  line-height: 1.6; /* Adds breathing room to paragraphs */
 }
 
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em; /* Tightens headings for a modern look */
+}
 h2 {
   font-size: 36px!important;
-  font-weight: 800!important;
 }
 
 .flexslider {

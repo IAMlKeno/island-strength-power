@@ -28,3 +28,19 @@
   border-top: 3px solid;
   padding-top: 15px;
 }
+
+.main-menu a.menu-link {
+  color: black !important;
+  font-weight: 500;
+}
+
+.main-menu a.menu-link:hover {
+  text-decoration: underline;
+}
+
+nav.navbar.navbar-default {
+    background: #fff;
+}
+.main-header:after {
+  background: #fff !important;
+}

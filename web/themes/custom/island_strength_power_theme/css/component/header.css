@@ -10,6 +10,13 @@
 a.site-branding__logo > img {
   max-width: 150px;
 }
+/* brand site-name */
+.site-branding__name a {
+  font-weight: 700;
+  color: rgb(246, 216, 19) !important;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+}
 
 @media only screen and (max-width: 600px) {
   a.site-branding__logo > img {
