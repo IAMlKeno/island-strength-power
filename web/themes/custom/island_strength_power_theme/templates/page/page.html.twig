@@ -38,6 +38,7 @@
 <!--End Header & Navbar -->
 
 <!-- Hero Section with Carousel -->
+{% if is_front %}
 <div class="hero-section">
   <div class="hero-inner">
     <div class="hero-content">
@@ -93,6 +94,7 @@
     </div>
   </div>
 </div>
+{% endif %}
 
 <!-- Main Content -->
 <div style="background: white; padding: 80px 32px;">
@@ -100,3 +102,68 @@
     {{ page.content }}
   </div>
 </div>
+
+
+{# ------ #}
+
+<!-- start: Footer -->
+{# {% if page.footer_first or page.footer_second or page.footer_third %} #}
+  <div class="footerwidget">
+    <div class="container">
+      
+      <div class="row">
+
+        <!-- Start Footer First Region -->
+        <div class = {{ footer_class }}>
+        <h3>{{ site_name }}</h3>
+        <p>
+          We are Prince Edward Island’s premier strength training community, dedicated to fostering a supportive and empowering environment for athletes of all levels
+          </p>
+        </div>
+        <!-- End Footer First Region -->
+
+        <!-- Start Footer Second Region -->
+        <div class = {{ footer_class }}>
+          <h3>Quick Links</h3>
+          <div><a href="/wrpf">Records</a></div>
+          <div><a href="/events">Events</a></div>
+          <div><a href="/merch">Merch</a></div>
+        </div>
+        <!-- End Footer Second Region -->
+
+        <!-- Start Footer third Region -->
+        <div class = {{ footer_class }}>
+          <h3>Contact</h3>
+          <ul>
+            <li>
+              Email: <a href="mailto:{{ site_mail }}" class="email" target="_blank" >{{ site_mail }} <i class="fab fa-envelope"></i></a>
+            </li>
+          </ul>
+        </div>
+        <!-- End Footer Third Region -->
+        <div class = {{ footer_class }}>
+          <h3>Follow Us</h3>
+            {% if instagram_url %}
+              <a href="{{ instagram_url }}" class="instagram" target="_blank" ><i class="fab fa-instagram"></i></a>
+            {% endif %}
+            {% if facebook_url %}
+              <a href="{{ facebook_url }}" class="facebook" target="_blank" ><i class="fab fa-facebook-f"></i></a>
+            {% endif %}
+            {% if twitter_url %}
+              <a href="{{ twitter_url }}" class="twitter" target="_blank" ><i class="fab fa-twitter"></i></a>
+            {% endif %}
+            {% if linkedin_url %}
+              <a href="{{ linkedin_url }}" class="linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            {% endif %}
+            {% if pinterest_url %}
+              <a href="{{ pinterest_url }}" class="pinterest" target="_blank" ><i class="fab fa-pinterest-p"></i></a>
+            {% endif %}
+            {% if rss_url %}
+              <a href="{{ rss_url }}" class="rss" target="_blank" ><i class="fas fa-rss"></i></a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{# {% endif %} #}
+<!--End Footer -->

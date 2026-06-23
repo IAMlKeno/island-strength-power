@@ -26,6 +26,10 @@ article[class*="node--type-event"][class*="node--view-mode-teaser"]:not(.node--t
   }
 }
 
+.events-teaser-view .views-row {
+  border-radius: 20px;
+}
+
 .events-teaser-view .views-row:nth-child(even) {
-  background-color: #B2A168;
+  background-color: #dccea0;
 }
