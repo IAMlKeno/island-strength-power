@@ -35,6 +35,16 @@ function island_strength_power_theme_preprocess_html(array &$variables): void {
 
 }
 
+function island_strength_power_theme_preprocess_views_view__frontpage__page_1(array &$variables): void {
+  $variables['vars'] = 'HOOK';
+  $show_slideshow = theme_get_setting('show_slideshow','island_strength_power_theme') == 1;
+
+  if ($show_slideshow) {
+    $variables['show_slideshow'] = 1;
+    $variables['slider_content'] = island_strength_power_theme_get_slider_content();
+  }
+}
+
 /**
  * Implements hook_preprocess_HOOK() for page.html.twig.
  */

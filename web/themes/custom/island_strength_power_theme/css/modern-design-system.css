@@ -52,13 +52,13 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
   line-height: 1.2;
   margin-bottom: 16px;
 }
 
-h1 { font-size: 52px; }
+h1 { font-size: 52px !important; }
 h2 { font-size: 36px; }
 h3 { font-size: 28px; }
 h4 { font-size: 20px; }
@@ -477,4 +477,12 @@ input, textarea, select {
 }
 header .container {
   width: 100%
+}
+.hero-content h4 {
+  color: var(--color-text-muted);
+}
+.front-events-title {
+  margin: auto;
+  text-align: center;
+  padding: 10px 0;
 }
