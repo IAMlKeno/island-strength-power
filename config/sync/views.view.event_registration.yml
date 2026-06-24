@@ -1301,7 +1301,7 @@ display:
         type: normal
         title: 'Event Registrations'
         description: ''
-        weight: -47
+        weight: -48
         expanded: false
         menu_name: main
         parent: ''

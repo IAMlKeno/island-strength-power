@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_display.node.event.default
     - filter.format.basic_html
     - filter.format.webform_default
     - node.type.basic_page
@@ -107,9 +106,7 @@ permissions:
   - 'bypass node access'
   - 'cancel account'
   - 'change own username'
-  - 'configure all event node layout overrides'
   - 'configure any layout'
-  - 'configure editable event node layout overrides'
   - 'create and edit custom blocks'
   - 'create athlete_profile profile'
   - 'create basic_page content'
