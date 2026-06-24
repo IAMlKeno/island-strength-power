@@ -11,6 +11,7 @@ global:
     component:
       css/component/block.css: {}
       css/component/breadcrumb.css: {}
+      css/component/cards.css: {}
       css/component/event.css: {}
       css/component/field.css: {}
       css/component/form.css: {}

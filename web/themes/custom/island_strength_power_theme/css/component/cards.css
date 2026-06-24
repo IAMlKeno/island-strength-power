@@ -1,0 +1,200 @@
+/* ============================================================
+   Island Strength & Power — Modern Cards
+   Component styles extracted from the redesign mockups.
+   Palette + type inherit from modern-design-system.css
+   ------------------------------------------------------------
+   Card types included:
+     1. .isp-feature-card   — icon / title / text (Core Values, "Why Us")
+     2. .isp-event-card     — date block + content row (Events list)
+     3. .isp-panel-card     — soft panel for forms (Contact, Register)
+   ============================================================ */
+
+/* ── 1. FEATURE CARD ─────────────────────────────────────────
+   White card, soft shadow, centered icon + heading + copy.
+   Used for the 3-up "Our Core Values" / feature grids. */
+.isp-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.isp-feature-card {
+  background: #fff;
+  /* padding: 32px; */
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.isp-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(43, 36, 32, 0.10);
+}
+
+.isp-feature-card__icon {
+  background: #6b6158;
+  font-size: 70px;
+  line-height: 1;
+  margin-bottom: 16px;
+  border-radius: 20px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  align-content: center;
+}
+.isp-feature-card__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2b2420;
+  margin: 0 0 12px 0;
+}
+.isp-feature-card__text {
+  font-size: 14px;
+  color: #6b6158;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tinted variant — the gold "Expert Coaching" promo block */
+.isp-feature-card--tint {
+  background: linear-gradient(135deg, #f5e6d3 0%, #f0dcc8 100%);
+  box-shadow: none;
+  padding: 40px;
+}
+.isp-feature-card--tint .isp-feature-card__icon { font-size: 60px; }
+.isp-feature-card--tint .isp-feature-card__title { font-size: 24px; }
+
+
+/* ── 2. EVENT CARD ───────────────────────────────────────────
+   Horizontal card: gradient date block on the left, details on
+   the right. Used in the Events listing. */
+.isp-event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.isp-event-card {
+  background: #fff;
+  border: 1px solid #ede8e3;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.isp-event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(43, 36, 32, 0.10);
+}
+
+/* Date block — gradient panel. Add a colour modifier per card
+   to introduce the warm palette variety from the mockups. */
+.isp-event-card__date {
+  background: linear-gradient(135deg, #d4a574 0%, #c9915f 100%);
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.isp-event-card__date--alt   { background: linear-gradient(135deg, #c9a17e 0%, #b38a6b 100%); }
+.isp-event-card__date--alt-2 { background: linear-gradient(135deg, #deb896 0%, #cfa07d 100%); }
+
+.isp-event-card__day {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+}
+.isp-event-card__month {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 6px 0 0 0;
+}
+/* Media area — reserves a FIXED height so the card stays the same
+   size whether or not an image is present. The image fills the box
+   with object-fit:cover; the placeholder occupies the same space. */
+.isp-event-card__media {
+  height: 160px;             /* the locked height — change to taste */
+  background: #f5e6d3;
+  overflow: hidden;
+  position: relative;
+}
+.isp-event-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* crop to fill, never distort */
+  display: block;
+}
+/* Branded fallback shown when no image is set */
+.isp-event-card__media--empty {
+  background: linear-gradient(135deg, #2b2420 0%, #4a423c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4a574;
+  font-size: 44px;
+}
+
+
+.isp-event-card__body {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.isp-event-card__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2b2420;
+  margin: 0 0 8px 0;
+}
+.isp-event-card__meta {
+  font-size: 13px;
+  color: #d4a574;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+.isp-event-card__text {
+  font-size: 14px;
+  color: #6b6158;
+  line-height: 1.6;
+  margin: 0;
+}
+
+
+/* ── 3. PANEL CARD ───────────────────────────────────────────
+   Soft off-white panel used to frame forms (Contact, Register). */
+.isp-panel-card {
+  background: #fafafa;
+  padding: 40px;
+  border-radius: 12px;
+}
+.isp-panel-card__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2b2420;
+  margin: 0 0 24px 0;
+}
+
+
+/* ── RESPONSIVE ──────────────────────────────────────────────*/
+@media (max-width: 820px) {
+  .isp-feature-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  .isp-event-card { grid-template-columns: 1fr; }
+  .isp-event-card__date { flex-direction: row; gap: 8px; padding: 14px 20px; }
+  .isp-event-card__day { font-size: 22px; }
+
+  .isp-panel-card,
+  .isp-feature-card--tint { padding: 28px; }
+}
