@@ -79,6 +79,9 @@ function island_strength_power_theme_preprocess_page(array &$variables): void {
   $variables['footer_class'] = 'col-md-3';
   $variables['site_mail'] = \Drupal::config('system.site')->get('mail');
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $storage = \Drupal::entityTypeManager()->getStorage('profile');
+  $profile = $storage->loadByUser($user, 'athlete_profile');
+  $variables['profile'] = $profile;
 }
 
 function island_strength_power_theme_preprocess_profile(array &$vars) {

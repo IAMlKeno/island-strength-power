@@ -17,10 +17,34 @@ a.site-branding__logo > img {
   font-size: 16px;
   font-family: Poppins, sans-serif;
 }
+.avatar-mobile {
+  display: none;
+}
+.user-avatar {
+  font-size: xx-large
+}
 
 @media only screen and (max-width: 600px) {
   a.site-branding__logo > img {
     border-radius: 90%;
-    max-width: 30%;
+  }
+  .site-branding__name {
+    display: none;
+  }
+  .navbar-mobile-toggle {
+    z-index: unset !important;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+  .avatar-mobile {
+    font-size: xx-large;
+    margin-right: 5px;
+    display: unset;
+    display: block;
+  }
+  .full-screen-avatar {
+    display: unset;
+    display: none !important;
   }
 }
