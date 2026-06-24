@@ -81,6 +81,15 @@ function island_strength_power_theme_preprocess_page(array &$variables): void {
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
 }
 
+function island_strength_power_theme_preprocess_profile(array &$vars) {
+  $vars['sometest'] = "Hello a";
+    /**
+   * @var Drupal\Core\Session\AccountProxy
+   */
+  $user = \Drupal::service('current_user');
+  $vars['user'] = $user;
+}
+
 /**
  * Slider
  * Implements custom function for get slider content.
@@ -296,5 +305,12 @@ function island_strength_power_theme_preprocess_block__system_branding_block(arr
 }
 
 function island_strength_power_theme_preprocess_menu__main(array &$variables): void {
-  $variables['is_logged_in'] = \Drupal::service('current_user')->isAuthenticated();
+  $user = \Drupal::service('current_user');
+  /** @var \Drupal\profile\ProfileStorageInterface $storage */
+  $storage = \Drupal::entityTypeManager()->getStorage('profile');
+  $profile = $storage->loadByUser($user, 'athlete_profile');
+
+  $variables['is_logged_in'] = $user->isAuthenticated();
+  $variables['user'] = $user;
+  $variables['profile'] = $profile;
 }

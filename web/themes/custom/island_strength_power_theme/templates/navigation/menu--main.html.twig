@@ -5,8 +5,8 @@
 #}
 {% import _self as menus %}
 
-{{ menus.menu_links(items, attributes, 0, is_logged_in) }}
-{% macro menu_links(items, attributes, menu_level, is_logged_in) %}
+{{ menus.menu_links(items, attributes, 0, is_logged_in, user, profile) }}
+{% macro menu_links(items, attributes, menu_level, is_logged_in, user, profile) %}
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
@@ -26,6 +26,9 @@
         {% endif %}
       </li>
     {% endfor %}
+      <li class="menu-item">
+        <a href="/profile/{{ profile.id }}" class="menu-link user-avatar"><i class="fa fa-user-circle"></i></a>
+      </li>
       <li class="menu-item">
         {% if is_logged_in %}
           <a class="login-btn" href="/user/logout">Logout</a>
