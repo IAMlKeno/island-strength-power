@@ -25,6 +25,7 @@
         "drupal/core-project-message": "10.6.12",
         "drupal/core-recommended": "10.6.12",
         "drupal/drupal8_zymphonies_theme": "^3.0",
+        "drupal/login_destination": "^2.0@beta",
         "drupal/mailsystem": "^4.5",
         "drupal/metatag": "^2.1",
         "drupal/mimemail": "^1.0@alpha",
