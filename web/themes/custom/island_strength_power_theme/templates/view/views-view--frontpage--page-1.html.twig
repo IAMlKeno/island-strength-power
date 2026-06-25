@@ -77,8 +77,9 @@
           {% for slider_contents in slider_content %}
             {% if loop.first %}
               <button class="carousel-dot active" data-carousel-dot></button>
+            {% else %}
+              <button class="carousel-dot" data-carousel-dot></button>
             {% endif %}
-            <button class="carousel-dot" data-carousel-dot></button>
           {% endfor %}
         </div>
       </div>
@@ -98,7 +99,7 @@
   {% endif %}
 
   {{ title_prefix }}
-  <h3 class="front-events-title">Upcoming Events</h3>
+  <h3 class="front-events-title">Our Events</h3>
   {% if title %}
     {{ title }}
   {% endif %}

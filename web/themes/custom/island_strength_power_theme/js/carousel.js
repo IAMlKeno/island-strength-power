@@ -70,6 +70,14 @@
       container.addEventListener('mouseleave', () => {
         this.startAutoRotate(container, carouselData);
       });
+      container.addEventListener('pointerdown', (e) => {
+        const anchor = e.target.closest('a');
+
+        if (anchor && anchor.href) {
+          // Manually force browser execution if the layout drops the native click sequence
+          window.location.href = anchor.href;
+        }
+      });
     },
 
     showSlide: function(container, carouselData, index) {
