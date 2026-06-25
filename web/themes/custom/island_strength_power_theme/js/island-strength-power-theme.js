@@ -28,13 +28,13 @@
         }
 
         $( registrationForm ).change((e) => {
-            const amount = $('#charge-amount-content');
-            let calculatedAmount = calculateDisplayAmount();
+          const amount = $('#charge-amount-content');
+          let calculatedAmount = calculateDisplayAmount();
 
-            amount.text(calculatedAmount);
-            return;
-          });
-        }
+          amount.text(calculatedAmount);
+          return;
+        });
+      }
 
       function calculateDisplayAmount() {
         let calculatedAmount = getEventPrice();
@@ -68,7 +68,21 @@
         return competitions != 0 ? (competitions - 1) * 30 : 0;
       }
 
+      /**
+       * This only runs when the window is first loaded. So test screen responsiveness by actively
+       * resizing the screen will not lead to appropriate testing.
+       */
+      function adjustViewGrid() {
+        const grid = $('.views-view-responsive-grid.views-view-responsive-grid--horizontal');
+        var screen = window.matchMedia("(max-width: 600px)")
+        if (grid && screen.matches) {
+          var r = grid.css('--views-responsive-grid--column-count', 1)
+        }
+      }
+      adjustViewGrid();
+
     }
   };
+
 
 } (jQuery, Drupal));
