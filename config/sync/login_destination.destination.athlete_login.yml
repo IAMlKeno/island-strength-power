@@ -1,0 +1,17 @@
+uuid: 1f0eac1f-b5be-4f40-81a4-f2858c9406b5
+langcode: en
+status: true
+dependencies: {  }
+name: athlete_login
+label: 'Athlete Login'
+triggers:
+  registration: registration
+  login: login
+destination_path: 'internal:/profile/[current-user:athlete_profile:profile_id]'
+pages_type: 0
+pages: ''
+language: ''
+roles:
+  isp_athlete: isp_athlete
+weight: 0
+enabled: true
