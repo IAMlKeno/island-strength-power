@@ -4,10 +4,9 @@ status: true
 dependencies: {  }
 id: athlete_profile
 label: 'Athlete Profile'
-display_label: 'My Profile'
+display_label: 'Athlete Profile'
 multiple: false
 registration: true
-roles:
-  authenticated: authenticated
+roles: {  }
 allow_revisions: false
 new_revision: false

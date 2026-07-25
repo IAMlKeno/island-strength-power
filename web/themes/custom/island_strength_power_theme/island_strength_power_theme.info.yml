@@ -6,6 +6,7 @@ package: Custom
 core_version_requirement: ^10
 libraries:
   - island_strength_power_theme/global
+  - island_strength_power_theme/google-fonts
 
 regions:
   header: 'Header'

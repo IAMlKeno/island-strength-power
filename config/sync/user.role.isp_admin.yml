@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_display.node.event.default
     - filter.format.basic_html
     - node.type.basic_page
     - node.type.event
@@ -36,6 +35,7 @@ permissions:
   - 'access administration pages'
   - 'access content'
   - 'access content overview'
+  - 'access profile overview'
   - 'access toolbar'
   - 'access webform help'
   - 'access webform overview'
@@ -53,7 +53,6 @@ permissions:
   - 'administer user form display'
   - 'administer webform element access'
   - 'administer webform submission'
-  - 'configure editable event node layout overrides'
   - 'create and edit custom blocks'
   - 'create athlete_profile profile'
   - 'create basic_page content'
@@ -67,6 +66,7 @@ permissions:
   - 'create terms in weight_class_wrpf'
   - 'create url aliases'
   - 'create webform'
+  - 'delete own athlete_profile profile'
   - 'delete own webform'
   - 'delete term revisions in age_category'
   - 'delete term revisions in competition'
@@ -100,8 +100,11 @@ permissions:
   - 'edit terms in weight_class_wrpf'
   - 'edit webform submissions any node'
   - 'edit webform submissions own node'
+  - 'update own athlete_profile profile'
   - 'use text format basic_html'
   - 'view any webform submission'
+  - 'view own athlete_profile profile'
+  - 'view own profile'
   - 'view own unpublished content'
   - 'view own webform submission'
   - 'view the administration theme'

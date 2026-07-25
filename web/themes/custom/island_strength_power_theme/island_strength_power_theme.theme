@@ -22,17 +22,13 @@ function island_strength_power_theme_theme_suggestions_alter(array &$suggestions
   $suggestions[] = $hook . '--' . 'custom';
 }
 
-/**
- * Implements hook_preprocess_HOOK() for html.html.twig.
- */
-function island_strength_power_theme_theme($existing, $type, $theme, $path) {
-}
+function island_strength_power_theme_preprocess_views_view__frontpage__page_1(array &$variables): void {
+  $show_slideshow = theme_get_setting('show_slideshow','island_strength_power_theme') == 1;
 
-/**
- * Implements hook_preprocess_HOOK() for html.html.twig.
- */
-function island_strength_power_theme_preprocess_html(array &$variables): void {
-
+  if ($show_slideshow) {
+    $variables['show_slideshow'] = 1;
+    $variables['slider_content'] = island_strength_power_theme_get_slider_content();
+  }
 }
 
 /**
@@ -66,6 +62,20 @@ function island_strength_power_theme_preprocess_page(array &$variables): void {
     }
   }
 
+  $variables['footer_class'] = 'col-md-3';
+  $variables['site_mail'] = \Drupal::config('system.site')->get('mail');
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $storage = \Drupal::entityTypeManager()->getStorage('profile');
+  $profile = $storage->loadByUser($user, 'athlete_profile');
+  $variables['profile'] = $profile;
+}
+
+function island_strength_power_theme_preprocess_profile(array &$vars) {
+  /**
+   * @var Drupal\Core\Session\AccountProxy
+   */
+  $user = \Drupal::service('current_user');
+  $vars['user'] = $user;
 }
 
 /**
@@ -88,14 +98,29 @@ function island_strength_power_theme_get_slider_content() {
       $path = base_path() . \Drupal::service('extension.list.theme')->getPath('drupal8_zymphonies_theme') . theme_get_setting('slide_image_path_' . $i, 'drupal8_zymphonies_theme');
     }
 
-    $slider_content[$i] = '<li>
-      <img src="' . $path . '" alt="Slider Banner" />
-      <div class="slider-caption">
-        <h2 class="slider-title">' . theme_get_setting('slide_title_' . $i, 'island_strength_power_theme').'</h2>
-        <div class="clearfix"><p class="slider-description">' . theme_get_setting('slide_description_' . $i, 'island_strength_power_theme').'</p></div>
-        <a href=' . theme_get_setting('slide_url_' . $i, 'island_strength_power_theme') . ' class="more-link">Read more</a>
-      </div>
-    </li>';
+    $slide_title = theme_get_setting("slide_title_$i", 'island_strength_power_theme');
+    $slide_description = theme_get_setting("slide_description_$i", 'island_strength_power_theme');
+    $slide_url = theme_get_setting("slide_url_$i", 'island_strength_power_theme');
+
+    $markup = [
+      '#type' => 'markup',
+      '#markup' => <<<HTML
+<div data-slide style="opacity: 0; transition: opacity 0.6s ease;">
+  <div class="carousel-image">
+    <img src="{$path}" alt="Slider Banner" />
+  </div>
+  <h3 class="carousel-title">$slide_title</h3>
+  <p class="carousel-description">
+    $slide_description
+  </p>
+  <p class="carousel-description">
+    <a href="{$slide_url}" hreflang="en" >Read more</a>
+  </p>
+</div>
+HTML,
+    ];
+
+    $slider_content[$i] = $markup;
   }
   return $slider_content;
 }
@@ -262,7 +287,21 @@ function island_strength_power_theme_form_system_theme_settings_alter(&$form, Fo
 }
 
 /**
- * Implements hook_preprocess_HOOK() for node.html.twig.
+ * Implements hook_preprocess_block() for system_branding_block.
  */
-function island_strength_power_theme_preprocess_node(array &$variables): void {
+function island_strength_power_theme_preprocess_block__system_branding_block(array &$variables): void {
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
+  $variables['site_logo'] = theme_get_setting('logo.url');
+}
+
+function island_strength_power_theme_preprocess_menu__main(array &$variables): void {
+  $user = \Drupal::service('current_user');
+  /** @var \Drupal\profile\ProfileStorageInterface $storage */
+  $storage = \Drupal::entityTypeManager()->getStorage('profile');
+  $profile = $storage->loadByUser($user, 'athlete_profile');
+
+  $variables['is_logged_in'] = $user->isAuthenticated();
+  $variables['user'] = $user;
+  $variables['profile'] = $profile;
 }

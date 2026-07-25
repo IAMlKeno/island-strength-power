@@ -149,6 +149,7 @@ display:
           query_tags: {  }
       relationships: {  }
       css_class: events-teaser-view
+      use_ajax: true
       header:
         area:
           id: area
@@ -245,7 +246,21 @@ display:
         operator: AND
         groups:
           1: AND
+      style:
+        type: grid_responsive
+        options:
+          uses_fields: false
+          columns: 3
+          cell_min_width: 100
+          grid_gutter: 10
+          alignment: horizontal
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: teaser
       defaults:
+        style: false
+        row: false
         filters: false
         filter_groups: false
         header: false
@@ -312,7 +327,9 @@ display:
     position: 1
     display_options:
       defaults:
+        css_class: false
         header: false
+      css_class: 'events-teaser-view isp-feature-grid'
       display_description: ''
       header: {  }
       display_extenders: {  }

@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ *
+ * Default theme implementation for profiles.
+ *
+ * Available variables:
+ * - content: Items for the content of the profile.
+ *   Use 'content' to print them all, or print a subset such as
+ *   'content.title'. Use the following code to exclude the
+ *   printing of a given child element:
+ *   @code
+ *   {{ content|without('title') }}
+ *   @endcode
+ * - attributes: HTML attributes for the wrapper.
+ * - view_mode: The profile view mode used.
+ * - profile: The profile object.
+ * - url: The profile URL, if available.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+  'profile',
+  'profile--' ~ profile.id,
+  'profile--type--' ~ profile.bundle|clean_class,
+  profile.isDefault() ? 'profile--is-default',
+  view_mode ? 'profile--view-mode--' ~ view_mode|clean_class,
+  'clearfix',
+  'profile-card-container',
+]
+%}
+
+<h2>Welcome {{ content.field_first_name.0 }}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_suffix.contextual_links }}
+  <div class="card profile-card">
+    <div class="card-title">Your Athlete Profile</div>
+    <div class="card-text">
+      <p>
+        <h4>{{ content.field_preferred_competition_styl['#title'] }}</h4>
+        {{ content.field_preferred_competition_styl.0['#title'] }}
+      </p>
+      <p>
+        <h4>{{ content.field_preferred_weight_class['#title'] }}</h4>
+        {{ content.field_preferred_weight_class.0['#title'] }}
+      </p>
+      <p>
+        <h4>{{ content.field_preferred_strongman_weight['#title'] }}</h4>
+        {{ content.field_preferred_strongman_weight.0['#title'] }}
+      </p>
+    </div>
+    <hr />
+    <div>
+      <a href="/user/{{ user.id }}/athlete_profile?destination=/profile/{{ profile.id }}" class="btn btn-small">Edit</a>
+    </div>
+  </div>
+</div>

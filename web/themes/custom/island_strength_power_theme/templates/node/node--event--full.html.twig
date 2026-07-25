@@ -63,7 +63,7 @@
  *   in different view modes.
  */
 #}
-{%
+{# {%
   set classes = [
     'node',
     'node--type-' ~ node.bundle|clean_class,
@@ -72,24 +72,143 @@
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
+%} #}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    not node.isPublished() ? 'node--unpublished',
+    'event-modern',
+  ]
 %}
 
+{# Convenience flags — guards against empty fields #}
+{% set has_image = node.hasField('field_banner_image') and node.field_banner_image.value is not empty %}
+{% set has_date  = node.hasField('field_event_date')  and node.field_event_date.value  is not empty %}
+{% set has_type  = node.hasField('field_event_type')  and node.field_event_type.value  is not empty %}
+{% set has_where = node.hasField('field_event_location')    and node.field_event_location.value    is not empty %}
+{% set has_price = node.hasField('field_registration_price') and node.field_registration_price.value is not empty %}
+
+<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 <article{{ attributes.addClass(classes) }}>
+{# {{content}} #}
+  {# ── HERO BAND ───────────────────────────────────────────────── #}
+  <header class="event-hero">
+    <div class="event-hero__glow" aria-hidden="true"></div>
+    <div class="event-hero__inner">
 
-  <div{{ content_attributes.addClass('node__content') }}>
-    {{ content }}
-  </div>
+      <nav class="event-breadcrumb">
+        <a href="{{ path('<front>') }}">Home</a>
+        <span class="sep">/</span>
+        <a href="/events">Events</a>
+      </nav>
 
-  <div id="payment-message" class="hidden">
-    <div class="messages__content">
+      {% if has_type %}
+        <span class="event-pill">{{ content.field_event_type }}</span>
+      {% endif %}
+
+      <h1 class="event-title">{{ label }}</h1>
+
+      <div class="event-meta">
+        {% if has_date %}
+          <span class="event-meta__item">
+            <span class="event-meta__icon">📅</span>{{ content.field_event_date.value|date('F j, Y, g:i a') }}
+          </span>
+        {% endif %}
+        {% if has_where %}
+          <span class="event-meta__item">
+            <span class="event-meta__icon">📍</span>
+              {{ content.field_event_location.0['#entity'].field_address.0.locality }} 
+              {{ content.field_event_location.0['#entity'].field_address.0.administrative_area }}
+          </span>
+        {% endif %}
+      </div>
+
+    </div>
+  </header>
+
+  {# ── BODY: TWO COLUMNS ───────────────────────────────────────── #}
+  <div class="event-body">
+    <div class="event-body__inner">
+
+      {# Left column — poster + description #}
+      <div class="event-main">
+        {% if has_image %}
+          <div class="event-poster">{{ content.field_banner_image }}</div>
+        {% else %}
+          <div class="event-poster event-poster--placeholder">
+            {# <span class="event-poster__mark">RBC Strongman Corporation Canada</span> #}
+            <span class="event-poster__big">{{ label }}</span>
+            <span class="event-poster__year">{{ content.field_event_date.value|date('Y') }}</span>
+          </div>
+        {% endif %}
+
+        <div class="event-description">
+          <h2>Event Description</h2>
+          {{ content.field_event_description }}
+        </div>
+      </div>
+
+      {# Right column — sticky info card #}
+      <aside class="event-card">
+        {{ content.field_registration_form }}
+        {% if has_date %}
+          <div class="event-card__row">
+            <p class="event-card__label">When</p>
+            <div class="event-card__value">{{ content.field_event_date.value|date('F j, Y, g:i a') }}</div>
+          </div>
+        {% endif %}
+
+        {% if has_type %}
+          <div class="event-card__row">
+            <p class="event-card__label">What</p>
+            <div class="event-card__value">{{ content.field_event_type }}</div>
+          </div>
+        {% endif %}
+
+        {% if has_where %}
+          <div class="event-card__row">
+            <p class="event-card__label">Where</p>
+            <div class="event-card__value">
+
+              <p>{{ content.field_event_location.0['#entity'].field_address.0.address_line1 }}</p>
+              <p>{{ content.field_event_location.0['#entity'].field_address.0.locality }}, {{ content.field_event_location.0['#entity'].field_address.0.postal_code }} {{ content.field_event_location.0['#entity'].field_address.0.administrative_area }}</p>
+              <p>{{ content.field_event_location.0['#entity'].field_address.0.country_code }}</p>
+              </div>
+          </div>
+        {% endif %}
+
+        {% if has_price %}
+          <div class="event-card__price">
+            <p class="event-card__label">Registration Price</p>
+            <p class="event-card__amount">${{ node.field_registration_price.value }}</p>
+          </div>
+        {% endif %}
+
+        <div id="payment-message" class="hidden">
+          <div class="messages__content"></div>
+        </div>
+
+        <div class="event-actions">
+          <button class="btn registration-btn" id="registration-btn">Register Now</button>
+          <a class="btn btn--ghost" href="#">＋ Add to Calendar</a>
+          <add-to-calendar-button
+            name="{{ label }}"
+            options="'Apple','Google'"
+            startDate={{ content.field_event_date.value|date('Y-m-d') }}
+            endDate={{ content.field_event_date.value|date('Y-m-d') }}
+            location="{{ content.field_event_location.0['#entity'].field_address.0.address_line1 }} {{ content.field_event_location.0['#entity'].field_address.0.locality }}, {{ content.field_event_location.0['#entity'].field_address.0.postal_code }} {{ content.field_event_location.0['#entity'].field_address.0.administrative_area }} {{ content.field_event_location.0['#entity'].field_address.0.country_code }}"
+          ></add-to-calendar-button>
+        </div>
+      </aside>
+
     </div>
   </div>
 
-  <div class="event-actions">
-    <button class="btn registration-btn" id="registration-btn">Register Now!</button>
+  {# Hidden render of any remaining fields so nothing is silently dropped. #}
+  <div class="visually-hidden">
+    {{ content|without('field_event_type', 'field_event_date', 'field_location', 'field_event_image', 'body', 'field_registration_price', 'field_tested_price', 'field_untested_price', 'links') }}
   </div>
-
-
 </article>
 
 <script>

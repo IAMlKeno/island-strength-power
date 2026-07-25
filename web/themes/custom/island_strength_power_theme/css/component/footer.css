@@ -15,3 +15,28 @@
 .dialog-off-canvas-main-canvas {
   padding-bottom: 50px;
 }
+
+.footerwidget {
+  background: rgb(43, 36, 32) !important;
+  padding: 48px 32px;
+  color: rgb(212, 204, 196);
+  border-top: 1px solid rgba(212, 165, 116, 0.2);
+}
+.footerwidget a {
+  color: var(--color-text-muted);
+}
+
+.footerwidget h3 {
+  font-weight: 700;
+  margin: 0px 0px 12px;
+  color: rgb(246, 216, 19);
+  font-family: Poppins, sans-serif;
+}
+
+.footerwidget li {
+  list-style: none;
+}
+.footerwidget i.fab {
+  font-size: 32px;
+  padding: 5px
+}

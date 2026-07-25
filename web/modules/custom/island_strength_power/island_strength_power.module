@@ -36,6 +36,13 @@ function island_strength_power_form_user_register_form_alter(&$form, FormStateIn
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function island_strength_power_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  prepend_register($form);
+}
+
+/**
  * This function attempts to prepend the signin markup.
  */
 function prepend_signin_option(&$form) {
@@ -43,6 +50,18 @@ function prepend_signin_option(&$form) {
     'sign_in' => [
       '#type' => 'item',
       '#markup' => '<div class="sign_in_prompt">Already have an account? <a href="/user/login">Sign in here</a></div>',
+    ],
+  ]);
+}
+
+/**
+ * This function attempts to prepend the signin markup.
+ */
+function prepend_register(&$form) {
+  array_unshift($form, [
+    'register' => [
+      '#type' => 'item',
+      '#markup' => '<div class="register_prompt">Don\'t have an account? <a href="/user/register">Sign up now</a></div>',
     ],
   ]);
 }

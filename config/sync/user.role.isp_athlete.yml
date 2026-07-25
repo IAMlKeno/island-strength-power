@@ -7,6 +7,7 @@ dependencies:
     - filter.format.webform_default
   module:
     - filter
+    - profile
     - system
 id: isp_athlete
 label: ISP_Athlete
@@ -14,5 +15,8 @@ weight: 3
 is_admin: null
 permissions:
   - 'access content'
+  - 'update own athlete_profile profile'
   - 'use text format basic_html'
   - 'use text format webform_default'
+  - 'view own athlete_profile profile'
+  - 'view own profile'

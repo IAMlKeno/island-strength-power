@@ -350,6 +350,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      title: 'Upcoming Events'
       filters:
         status:
           id: status
@@ -413,7 +414,22 @@ display:
         operator: AND
         groups:
           1: AND
+      style:
+        type: grid_responsive
+        options:
+          uses_fields: false
+          columns: 3
+          cell_min_width: 100
+          grid_gutter: 10
+          alignment: horizontal
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: teaser
       defaults:
+        title: false
+        style: false
+        row: false
         filters: false
         filter_groups: false
         header: false
@@ -428,7 +444,7 @@ display:
           admin_label: 'Welcome message'
           plugin_id: text_custom
           empty: false
-          content: "<h2>Welcome to Island Strength & Power!</h2>\r\n<h4>Prince Edward Island's #1 Strength Club!</h4>\r\n<p>\r\nWe are Prince Edward Island’s premier strength training community, dedicated to fostering a supportive and empowering environment for athletes of all levels. Whether you’re a seasoned lifter or just beginning your strength training journey, Island Strength and Power is here to help you achieve your personal goals and elevate your performance.\r\n</p>"
+          content: "<h1>Island Strength & Power</h1>\r\n<h4>Prince Edward Island's #1 Strength Club!</h4>\r\n<p>\r\nWe are Prince Edward Island’s premier strength training community, dedicated to fostering a supportive and empowering environment for athletes of all levels. Whether you’re a seasoned lifter or just beginning your strength training journey, Island Strength and Power is here to help you achieve your personal goals and elevate your performance.\r\n</p>"
           tokenize: false
       footer: {  }
       display_extenders: {  }

@@ -14,115 +14,69 @@ dependencies:
     - field.field.node.event.field_registration_price
     - field.field.node.event.field_tested_price
     - field.field.node.event.field_untested_price
-    - field.field.node.event.layout_builder__layout
+    - image.style.medium
     - node.type.event
   module:
+    - image
     - layout_builder
     - user
 third_party_settings:
   layout_builder:
-    enabled: true
+    enabled: false
     allow_custom: false
-    sections:
-      -
-        layout_id: layout_twocol_section
-        layout_settings:
-          label: 'Teaser - image and evt info'
-          context_mapping: {  }
-          column_widths: 33-67
-        components:
-          80352f33-7e47-4ff7-924a-a27d7fb1dee2:
-            uuid: 80352f33-7e47-4ff7-924a-a27d7fb1dee2
-            region: first
-            configuration:
-              id: 'field_block:node:event:field_banner_image'
-              label: 'Banner Image'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: image
-                label: hidden
-                settings:
-                  image_link: content
-                  image_style: thumbnail
-                  image_loading:
-                    attribute: lazy
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          dd7d0f77-2607-48d7-8463-702ec6257ed9:
-            uuid: dd7d0f77-2607-48d7-8463-702ec6257ed9
-            region: second
-            configuration:
-              id: 'field_block:node:event:title'
-              label: Title
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: true
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          2be1d2c5-c2c3-4926-821b-0a2d5388e44f:
-            uuid: 2be1d2c5-c2c3-4926-821b-0a2d5388e44f
-            region: second
-            configuration:
-              id: 'field_block:node:event:field_event_date'
-              label: 'Event Date'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: timestamp
-                label: hidden
-                settings:
-                  date_format: html_date
-                  custom_date_format: ''
-                  timezone: ''
-                  tooltip:
-                    date_format: long
-                    custom_date_format: ''
-                  time_diff:
-                    enabled: false
-                    future_format: '@interval hence'
-                    past_format: '@interval ago'
-                    granularity: 2
-                    refresh: 60
-                    description: ''
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-        third_party_settings: {  }
 id: node.event.teaser
 targetEntityType: node
 bundle: event
 mode: teaser
 content:
+  field_banner_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_event_date:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_event_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 3
     region: content
 hidden:
-  field_banner_image: true
-  field_event_date: true
   field_event_description: true
   field_event_location: true
-  field_event_type: true
   field_location: true
   field_registration_form: true
   field_registration_price: true
   field_tested_price: true
   field_untested_price: true
-  layout_builder__layout: true

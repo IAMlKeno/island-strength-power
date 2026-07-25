@@ -73,17 +73,10 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
-{% set has_image = node.hasField('field_banner_image') and node.field_banner_image.value is not empty %}
-
 {# {{ attach_library('classy/node') }} #}
-<article class="isp-feature-card">
-  <div class="isp-feature-card__icon text-center">
-    {% if has_image %}
-      {{ content.field_banner_image }}
-    {% else %}
-      🏋🏼
-    {% endif %}
+<article{{ attributes.addClass(classes) }}>
+  <h1 class="isp-page-title">{{ content.field_header_text }}</h1>
+  <div{{ content_attributes.addClass('node__content', 'isp-prose') }}>
+    {{ content.body }}
   </div>
-  <h3 class="isp-event-card__title">{{ label }}</h3>
-  <p class="isp-feature-card__date">{{ node.field_event_date.value|date('F d, Y') }}</p>
 </article>
