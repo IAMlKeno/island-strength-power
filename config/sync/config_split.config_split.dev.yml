@@ -10,10 +10,7 @@ stackable: false
 no_patching: false
 storage: folder
 folder: ../config/dev
-module:
-  devel: 0
-  devel_kint_extras: 0
-  devel_php: 0
+module: {  }
 theme: {  }
 complete_list: {  }
 partial_list:

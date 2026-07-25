@@ -1,14 +1,14 @@
 adding:
-  environment: test
   apikey:
     test:
-      public: ''
+      public: isp_admin
+      secret: hu5@Fell
     live:
       public: ''
 removing:
-  environment: live
   apikey:
     test:
       public: null
+      secret: null
     live:
       public: null

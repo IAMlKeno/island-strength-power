@@ -37,6 +37,17 @@ elements: |-
       '#autocomplete': email
       '#default_value': '[current-user:mail]'
       '#required': true
+    province:
+      '#type': webform_address
+      '#title': 'Province '
+      '#address__access': false
+      '#address_2__access': false
+      '#city__access': false
+      '#state_province__title': Province
+      '#state_province__required': true
+      '#state_province__type': textfield
+      '#postal_code__access': false
+      '#country__access': false
   competition_specifics:
     '#type': webform_flexbox
     weight_class:
