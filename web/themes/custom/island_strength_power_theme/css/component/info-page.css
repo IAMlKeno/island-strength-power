@@ -1,0 +1,165 @@
+/* ============================================================
+   Island Strength & Power — Modern Informational Pages
+   Fresh, readable styling for text-heavy content
+   (About Us, Contact, generic Basic pages).
+   ------------------------------------------------------------
+   Scope: applies to Basic page nodes (.node--type-page) and to
+   anything wrapped in .isp-prose. Palette + type inherit from
+   modern-design-system.css.
+   ============================================================ */
+
+/* ── PAGE TITLE BAND ──────────────────────────────────────────
+   Gives every informational page a clean, branded header strip
+   instead of a bare H1 floating above a wall of text. */
+.page-title,
+.isp-page-title {
+  max-width: 760px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #2b2420;
+  position: relative;
+}
+.page-title::after,
+.isp-page-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  border-radius: 2px;
+  background: #d4a574;
+  margin-top: 16px;
+}
+
+/* ── READABLE CONTENT COLUMN ──────────────────────────────────
+   Constrains long text to a comfortable measure (~70 chars) and
+   centers it. This is the single biggest readability upgrade. */
+.node--type-page,
+.isp-prose {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 24px 72px;
+  font-family: 'Sora', sans-serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #4a423c;
+}
+
+/* Headings / section labels — the bold lead-ins in the current
+   content ("Get in Touch", "Email Us", "Visit Us"…) become real
+   visual section headers. Works whether they are <h2>/<h3> or a
+   leading <strong> at the start of a paragraph. */
+.node--type-page h2,
+.isp-prose h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2b2420;
+  margin: 44px 0 12px;
+  line-height: 1.25;
+}
+.node--type-page h3,
+.isp-prose h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2b2420;
+  margin: 32px 0 10px;
+}
+
+/* Treat a paragraph that is ONLY a bold lead-in as a sub-heading. */
+.node--type-page p > strong:only-child,
+.isp-prose p > strong:only-child {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2b2420;
+  margin-top: 18px;
+}
+
+.node--type-page p,
+.isp-prose p {
+  margin: 0 0 20px;
+  text-wrap: pretty;
+}
+
+/* Links — clear, on-brand, with a subtle underline that thickens
+   on hover. Fixes the default plain-blue links in the content. */
+.node--type-page a,
+.isp-prose a {
+  color: #b07c3f;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(176, 124, 63, 0.35);
+  transition: border-color 0.2s ease, color 0.2s ease;
+  word-break: break-word;
+}
+.node--type-page a:hover,
+.isp-prose a:hover {
+  color: #8a5f2c;
+  border-bottom-color: #8a5f2c;
+}
+
+/* Lists */
+.node--type-page ul,
+.node--type-page ol,
+.isp-prose ul,
+.isp-prose ol {
+  margin: 0 0 22px;
+  padding-left: 22px;
+}
+.node--type-page li,
+.isp-prose li { margin-bottom: 8px; }
+
+/* Inline contact rows that start with an emoji/icon (📍 ✉ etc.) —
+   give them a touch of breathing room and weight. */
+.node--type-page p:first-line,
+.isp-prose p:first-line { }
+
+/* Images — rounded, soft shadow, never overflow the column.
+   The banner photo at the bottom of the page reads as a feature. */
+.node--type-page img,
+.isp-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 10px 32px rgba(43, 36, 32, 0.14);
+  margin: 28px 0;
+  display: block;
+}
+
+/* Blockquote / callout */
+.node--type-page blockquote,
+.isp-prose blockquote {
+  margin: 28px 0;
+  padding: 18px 24px;
+  background: #faf5ee;
+  border-left: 4px solid #d4a574;
+  border-radius: 8px;
+  font-size: 17px;
+  color: #5a5048;
+}
+
+/* Horizontal rule as a soft divider */
+.node--type-page hr,
+.isp-prose hr {
+  border: none;
+  border-top: 1px solid #ede8e3;
+  margin: 40px 0;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 820px) {
+  .page-title,
+  .isp-page-title { font-size: 30px; margin-top: 32px; }
+
+  .node--type-page,
+  .isp-prose { font-size: 16px; padding: 24px 18px 56px; }
+
+  .node--type-page h2,
+  .isp-prose h2 { font-size: 22px; }
+}

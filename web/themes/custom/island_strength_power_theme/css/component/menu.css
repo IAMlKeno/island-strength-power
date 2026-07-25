@@ -1,69 +1,186 @@
-.main-header {
-  background-image: none!important;
-}
+/* ============================================================
+   Island Strength & Power — Navigation
+   Clean horizontal nav with proper child-link dropdowns and the
+   priority-nav "More ⌄" overflow menu (see js/nav-overflow.js).
+   ============================================================ */
 
+.main-header { background-image: none !important; }
 
+/* ── TOP-LEVEL MENU ──────────────────────────────────────────
+   Flex row, single line. min-width:0 lets the overflow JS measure
+   the available width and tuck extras into "More". */
 .main-menu {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   background: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+  min-width: 0;
+  justify-content: flex-end;
 }
 
-.main-menu .menu-item {
-  display: inline-block;
-  margin-right: 20px;
+.main-menu > .menu-item {
+  position: relative;     /* anchor for dropdown */
+  margin: 0;
+  flex: 0 0 auto;
 }
 
-.main-menu .menu-item a {
-  color: #fff;
+.main-menu > .menu-item > a,
+.main-menu > .menu-item > .menu-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #2b2420;
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
   text-decoration: none;
-  padding: 10px;
-  display: block;
-  font-size: 18px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-.main-menu .menu-item:hover {
-
+.main-menu > .menu-item > a:hover,
+.main-menu > .menu-item > .menu-link:hover,
+.main-menu > .menu-item.active > a {
+  color: #b07c3f;
+  background: #faf5ee;
 }
 
-/* Style the active menu item */
-.main-menu .menu-item.active a {
-}
+/* Active item gets a subtle underline accent */
+.main-menu > .menu-item.active > a { box-shadow: inset 0 -2px 0 #d4a574; }
 
-/* Dropdown indicator */
-.main-menu .menu-item.expanded .dropdown-toggle {
-  content: ' ▼';
+/* Dropdown caret */
+.main-menu .dropdown-toggle,
+.main-menu .caret {
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
 }
+.main-menu .menu-item:hover .dropdown-toggle,
+.main-menu .menu-item.is-open .dropdown-toggle,
+.main-menu .menu-item.is-open .caret { transform: rotate(180deg); }
 
-/* Submenu styles */
-.submenu {
-  display: none; /* Hidden by default */
+/* ── CHILD DROPDOWN (.submenu) ───────────────────────────────
+   THIS is the fix for the broken child-menu links: instead of an
+   indented, low-contrast inline list, children now render as a
+   proper floating panel on hover / focus / click. */
+.main-menu .submenu {
   list-style: none;
-  padding-left: 20px;
+  margin: 0;
+  padding: 8px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 210px;
+  background: #fff;
+  border: 1px solid #ede8e3;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(43, 36, 32, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  z-index: 1000;
 }
 
-.submenu .menu-item {
+/* Right-align the panel for items near the right edge (More, etc.) */
+.main-menu .menu-item--align-right .submenu,
+.main-menu .menu-item--more .submenu { left: auto; right: 0; }
+
+/* Reveal on hover, keyboard focus, or JS-toggled .is-open */
+.main-menu .menu-item:hover > .submenu,
+.main-menu .menu-item:focus-within > .submenu,
+.main-menu .menu-item.is-open > .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(4px);
+}
+
+.main-menu .submenu .menu-item {
   display: block;
+  margin: 0;
 }
 
-.main-menu .menu-item.expanded > .submenu {
-  display: block; /* Show submenu when expanded */
+.main-menu .submenu .menu-item a,
+.main-menu .submenu .menu-item .menu-link {
+  display: block;
+  color: #4a423c;          /* was #ccc — unreadable on white */
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: color 0.18s ease, background 0.18s ease;
 }
 
-.submenu .menu-item a {
-  color: #ccc;
+.main-menu .submenu .menu-item a:hover,
+.main-menu .submenu .menu-item.active a {
+  color: #b07c3f;
+  background: #faf5ee;
 }
 
-.submenu .menu-item:hover {
+/* ── "MORE" OVERFLOW ITEM ────────────────────────────────────
+   Injected by js/nav-overflow.js. Hidden until it has children. */
+.main-menu .menu-item--more { position: relative; }
+.main-menu .more-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2b2420;
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.main-menu .more-toggle:hover,
+.main-menu .menu-item--more.is-open .more-toggle {
+  color: #b07c3f;
+  background: #faf5ee;
 }
 
-@media only screen and (max-width: 600px) {
-  .main-menu .menu-item {
-    display: block;
+/* ── MOBILE ──────────────────────────────────────────────────
+   Below 768px the nav stacks (Bootstrap navbar-toggle). The
+   overflow JS disables itself and all items are shown. */
+@media (max-width: 767px) {
+  .main-menu {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+  .main-menu > .menu-item { width: 100%; }
+  .main-menu > .menu-item > a,
+  .main-menu > .menu-item > .menu-link {
+    border-radius: 0;
+    border-bottom: 1px solid #f0ece7;
   }
 
-  .main-menu .menu-item a {
-    color: #078D92;
+  /* Child links: static, indented list (no floating panel on touch) */
+  .main-menu .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0 0 0 12px;
+    min-width: 0;
+    background: #faf7f3;
+    display: none;
   }
+  .main-menu .menu-item.is-open > .submenu { display: block; }
 }

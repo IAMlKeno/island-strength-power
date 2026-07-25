@@ -27,11 +27,11 @@
       </li>
     {% endfor %}
     {% if is_logged_in %}
-      <li class="menu-item full-screen-avatar">
+      <li class="menu-item full-screen-avatar overflow-exclude">
         <a href="/profile/{{ profile.id }}" class="menu-link user-avatar"><i class="fa fa-user-circle"></i></a>
       </li>
     {% endif %}
-      <li class="menu-item">
+      <li class="menu-item overflow-exclude">
         {% if is_logged_in %}
           <a class="login-btn" href="/user/logout">Logout</a>
         {% else %}

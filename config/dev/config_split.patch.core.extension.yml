@@ -1,7 +1,5 @@
 adding:
   module:
     devel: 0
-    devel_kint_extras: 0
     devel_php: 0
-    login_destination: 0
 removing: {  }

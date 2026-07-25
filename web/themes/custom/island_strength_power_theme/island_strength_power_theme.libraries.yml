@@ -3,6 +3,7 @@ global:
   js:
     js/island-strength-power-theme.js: {}
     js/carousel.js: {}
+    js/nav-overflow.js: {}
     https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js: { type: external, minified: true }
   css:
     base:
@@ -24,6 +25,7 @@ global:
       css/component/tabs.css: {}
       css/component/buttons.css: {}
       css/component/footer.css: {}
+      css/component/info-page.css: {}
     layout:
       css/layout/layout.css: {}
     theme:
